@@ -1,0 +1,62 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ooup-dev-194341-authRole",
+      "UnauthRoleArn": "arn:aws:iam::140481902727:role/amplify-ooup-dev-194341-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::140481902727:role/amplify-ooup-dev-194341-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-ooup-dev-194341-deployment",
+      "UnauthRoleName": "amplify-ooup-dev-194341-unauthRole",
+      "StackName": "amplify-ooup-dev-194341",
+      "StackId": "arn:aws:cloudformation:us-east-2:140481902727:stack/amplify-ooup-dev-194341/9100a960-844d-11eb-ab5f-0a258091f644",
+      "AmplifyAppId": "dqirm9jyzptba"
+    }
+  },
+  "auth": {
+    "ooup": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ooup-dev-194341-deployment/amplify-cfn-templates/auth/ooup-cloudformation-template.yml",
+        "logicalId": "authooup"
+      },
+      "lastPushTimeStamp": "2021-03-14T19:43:28.998Z",
+      "output": {
+        "UserPoolId": "us-east-2_9CJRZZLXj",
+        "AppClientIDWeb": "730tgoinesg2knqsd5r03lgck4",
+        "AppClientID": "3vklmfu6n20a83r9dahdckq33l",
+        "IdentityPoolId": "us-east-2:55307068-36e5-4a2e-8349-05eab287c200",
+        "IdentityPoolName": "testAuthIdentityPool__dev",
+        "UserPoolName": "ooup"
+      },
+      "lastPushDirHash": "aPoNEz+LJU+16P0TbHjawMOAiCg="
+    }
+  },
+  "api": {
+    "tasks": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authooup"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "f7cyixbg6fd2bnlmq6qat4sbdq",
+        "GraphQLAPIEndpointOutput": "https://slmru3idunc5rowif635m56qu4.appsync-api.us-east-2.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ooup-dev-194341-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apitasks"
+      },
+      "lastPushTimeStamp": "2021-03-14T19:43:28.992Z",
+      "lastPushDirHash": "qY6uINiZttgAlSN6dlnZ1EGP7Sc="
+    }
+  }
+}
