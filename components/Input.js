@@ -6,13 +6,13 @@ import { Input } from "galio-framework"
 import Icon from './Icon'
 import { customTheme } from "../constants"
 
-const CustomInput = ({ shadowless, success, error }) => {
+const CustomInput = ({ shadowless, success, error, ...props }) => {
   const inputStyles = [
     styles.input,
     !shadowless && styles.shadow,
     success && styles.success,
     error && styles.error,
-    {...this.props.style}
+    {...props.style}
   ]
 
   return (
@@ -29,7 +29,7 @@ const CustomInput = ({ shadowless, success, error }) => {
           family="AntDesign"
         />
       }
-      {...this.props}
+      {...props}
     />
   )
 }

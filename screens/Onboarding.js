@@ -1,33 +1,33 @@
-import React from "react"
+import React from 'react'
 import {
   ImageBackground,
   StyleSheet,
   StatusBar,
   Dimensions,
   Platform
-} from "react-native"
-import { Block, Button, Text, theme } from "galio-framework"
+} from 'react-native'
+import { Block, Button, Text, theme } from 'galio-framework'
 
-const { height, width } = Dimensions.get("screen")
-import { Images, customTheme } from "../constants/"
-import { HeaderHeight } from "../constants/utils"
+const { height, width } = Dimensions.get('screen')
+import { Images, customTheme } from '../constants/'
+import { HeaderHeight } from '../constants/utils'
 
 export default function Onboarding({navigation}) {
   return (
     <Block flex style={styles.container}>
-    <StatusBar barStyle="light-content" />
+    <StatusBar barStyle='light-content' />
     <Block flex>
       <ImageBackground
         source={Images.Onboarding}
         style={{ flex: 1, height: height, width, zIndex: 1 }}
       />
-      <Block space="between" style={styles.padded}>
+      <Block space='between' style={styles.padded}>
       <Block>
         <Button
         shadowless
         style={styles.button}
         color={customTheme.COLORS.INFO}
-        onPress={() => navigation.navigate("App")}
+        onPress={() => navigation.navigate('App')}
         >
         <Text style={{ fontFamily: 'open-sans-bold', fontSize: 14 }} color={theme.COLORS.WHITE}>
           GET STARTED
@@ -43,14 +43,14 @@ export default function Onboarding({navigation}) {
 const styles = StyleSheet.create({
   container: {
   backgroundColor: theme.COLORS.BLACK,
-  marginTop: Platform.OS === "android" ? -HeaderHeight : 0
+  marginTop: Platform.OS === 'android' ? -HeaderHeight : 0
   },
   padded: {
   paddingHorizontal: theme.SIZES.BASE * 2,
   zIndex: 3,
-  position: "absolute",
+  position: 'absolute',
   bottom:
-    Platform.OS === "android" ? theme.SIZES.BASE * 2 : theme.SIZES.BASE * 3
+    Platform.OS === 'android' ? theme.SIZES.BASE * 2 : theme.SIZES.BASE * 3
   },
   button: {
   width: width - theme.SIZES.BASE * 4,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   gradient: {
   zIndex: 1,
-  position: "absolute",
+  position: 'absolute',
   bottom: 0,
   left: 0,
   right: 0,

@@ -1,4 +1,5 @@
 import React from "react"
+import { Dimensions } from 'react-native'
 
 import { createStackNavigator } from "@react-navigation/stack"
 import { createDrawerNavigator } from "@react-navigation/drawer"
@@ -27,6 +28,7 @@ const OnboardingStack = (props) => {
           headerTransparent: true
         }}
       />
+      <Stack.Screen name="App" component={AppStack} />
     </Stack.Navigator>
   )
 }

@@ -1,20 +1,20 @@
-import React, {useState} from "react"
-import { Alert } from "react-native"
+import React, {useState} from 'react'
 import { Auth } from 'aws-amplify'
 import {
+  Alert,
   StyleSheet,
   ImageBackground,
   Dimensions,
   StatusBar,
   TouchableWithoutFeedback,
   Keyboard
-} from "react-native"
-import { Block, Text } from "galio-framework"
+} from 'react-native'
+import { Block, Text } from 'galio-framework'
 
-import { Button, Icon, Input } from "../components"
-import { Images, customTheme } from "../constants"
+import { Button, Icon, Input } from '../components'
+import { Images, customTheme } from '../constants'
 
-const { width, height } = Dimensions.get("screen")
+const { width, height } = Dimensions.get('screen')
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -50,22 +50,22 @@ const Login = (props) => {
         >
           <Block flex middle>
             <Block style={styles.registerContainer}>
-              <Block flex space="between">
-                <Block flex={0.8} middle space="between">
+              <Block flex space='between'>
+                <Block flex={0.8} middle space='between'>
                   <Block flex={0.2} middle>
                     <Text
                       style={{
-                        fontFamily: "open-sans-regular",
-                        textAlign: "center"
+                        fontFamily: 'open-sans-regular',
+                        textAlign: 'center'
                       }}
-                      color="#8898AA"
+                      color='#8898AA'
                       size={12}
                     >  
                       Sign in
                     </Text>
                   </Block>
                   <Block center flex={0.9}>
-                    <Block flex space="between">
+                    <Block flex space='between'>
                       <Block>
                         <Block
                           width={width * 0.8}
@@ -73,14 +73,14 @@ const Login = (props) => {
                         >
                           <Input
                             borderless
-                            placeholder="Email"
+                            placeholder='Email'
                             onChangeText={setEmail}
                             iconContent={
                               <Icon
                                 size={16}
-                                color="#ADB5BD"
-                                name="mail"
-                                family="Feather"
+                                color='#ADB5BD'
+                                name='mail'
+                                family='Feather'
                                 style={styles.inputIcons}
                               />
                             }
@@ -90,14 +90,14 @@ const Login = (props) => {
                           <Input
                             password
                             borderless
-                            placeholder="Password"
+                            placeholder='Password'
                             onChangeText={setPassword}
                             iconContent={
                               <Icon
                                 size={16}
-                                color="#ADB5BD"
-                                name="lock"
-                                family="Feather"
+                                color='#ADB5BD'
+                                name='lock'
+                                family='Feather'
                                 style={styles.inputIcons}
                               />
                             }
@@ -122,12 +122,12 @@ const Login = (props) => {
                       </Block>
                       <Block center>
                         <Button 
-                          color="primary" 
+                          color='primary' 
                           style={styles.createButton}
                           onPress={onSubmit}
                         >
                           <Text
-                            style={{ fontFamily: "open-sans-bold" }}
+                            style={{ fontFamily: 'open-sans-bold' }}
                             size={14}
                             color={customTheme.COLORS.WHITE}
                           >
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   registerContainer: {
     width: width * 0.9,
     height: height < 812 ? height * 0.4 : height * 0.35,
-    backgroundColor: "#F4F5F7",
+    backgroundColor: '#F4F5F7',
     borderRadius: 4,
     shadowColor: customTheme.COLORS.BLACK,
     shadowOffset: {
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOpacity: 0.1,
     elevation: 1,
-    overflow: "hidden"
+    overflow: 'hidden'
   },
   inputIcons: {
     marginRight: 12

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import { Alert } from "react-native"
 import { Auth } from 'aws-amplify'
 import {
+  Alert,
   StyleSheet,
   ImageBackground,
   Dimensions,
@@ -111,8 +111,8 @@ const Register = (props) => {
                               <Icon
                                 size={16}
                                 color='#ADB5BD'
-                                name='pen-tool'
-                                family='Feather'
+                                name='signature'
+                                family='font-awesome-5'
                                 style={styles.inputIcons}
                               />
                             }
@@ -130,8 +130,8 @@ const Register = (props) => {
                               <Icon
                                 size={16}
                                 color='#ADB5BD'
-                                name='mail'
-                                family='Feather'
+                                name='envelope'
+                                family='font-awesome-5'
                                 style={styles.inputIcons}
                               />
                             }
@@ -150,7 +150,7 @@ const Register = (props) => {
                                 size={16}
                                 color='#ADB5BD'
                                 name='user'
-                                family='Feather'
+                                family='font-awesome-5'
                                 style={styles.inputIcons}
                               />
                             }
@@ -167,7 +167,7 @@ const Register = (props) => {
                                 size={16}
                                 color='#ADB5BD'
                                 name='lock'
-                                family='Feather'
+                                family='font-awesome-5'
                                 style={styles.inputIcons}
                               />
                             }

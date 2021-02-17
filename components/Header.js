@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, StyleSheet, Platform, Dimensions, Keyboard } from 'react-native'
+import { TouchableOpacity, StyleSheet, Platform, Dimensions } from 'react-native'
 import { Button, Block, NavBar, Text, theme } from 'galio-framework'
 import { useNavigation } from '@react-navigation/native'
 
