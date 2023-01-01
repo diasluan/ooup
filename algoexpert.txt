@@ -1,0 +1,3750 @@
+Hey everybody, Welcome to Dev Elite.
+In this video,
+we're gonna be talking about complexity analysis.
+Just as data structures
+are the foundational knowledge that you need
+to tackle coding interview problems.
+Complexity analysis is the foundational knowledge
+that you need to better understand data structures.
+And in turn, complexity analysis
+is sort of like the bedrock of coding interview problems.
+If we take a step back for a second
+when you're dealing with a coding interview problem
+it's very common for a single coding interview problem
+have multiple solutions.
+In front of me here I've drawn out
+one problem P and it's got three solutions,
+and if you look at all of the problems on Dev Elite,
+you'll see that a lot of them have multiple solutions.
+It's not uncommon for a single problem
+to have three solutions, some even have four.
+Are all of these solutions equal?
+Are they all just as good as each other?
+It turns out they're not.
+Some solutions are better than others.
+Some solutions are a lot better than others.
+In fact, when you're gonna be in an actual coding interview,
+you'll likely find yourself in the position
+where you found an answer.
+You found a solution to the problem that you've been given.
+Maybe you've even coded it out
+and your interviewer's going to ask you
+the notorious question, can you do better?
+Can you find a better solution?
+And of course this begs the question,
+what is a better solution?
+What makes one solution better than another solution?
+And this is where complexity comes into play.
+What makes one solution better than another
+is whether or not it has a better complexity.
+Now, what does complexity mean?
+When we say complexity,
+we're not referring to a solutions difficulty
+or complicatedness.
+Granted, if a solution is needlessly complicated,
+that might make it worse than another solution,
+but that's not really a reliable metric
+that we're gonna be looking at
+when comparing multiple solutions.
+When we talk about complexity here,
+we're referring to a very specific computer science concept,
+which can be further divided into two other concepts
+called time complexity and space complexity.
+So, I'm gonna write them down
+and you'll see that we use these concepts
+in basically every single video explanation
+of Dev Elite questions.
+So, we've got time complexity
+and we've got space complexity.
+And you can refer to both of them together
+as space-time complexity.
+So, what is time complexity?
+What is space complexity?
+I wanna give you a very high level overview
+of these two concepts in this video.
+In the next couple of videos of the data structures content
+on Dev Elite, we're gonna cover the underlying concepts
+of space-time complexity.
+We're gonna dive into the details
+and nuances of space-time complexity.
+We're gonna look at how to measure it.
+We're gonna look at the notation that we use to describe it,
+but at a big picture level,
+time complexity is really just a measure
+of how fast an algorithm or a solution
+to a coding interview problem runs,
+and space complexity is just a measure of how much memory
+or space an algorithm uses up.
+Keeping in mind that we're gonna be covering memory,
+which is one of these underlying concepts
+of space-time complexity in the next video.
+But so the faster an algorithm runs,
+the better its time complexity is
+and therefore the better the algorithm is.
+Similarly, the less memory an algorithm takes,
+the better its space complexity is
+and therefore the better the algorithm is.
+Now going back to the solutions of our problem,
+if we're comparing,
+let's say solution one to solution two
+the better solution will be the one
+that has a better time complexity
+or a better space complexity.
+Now mind you sometimes one solution will have
+maybe a better time complexity than another one,
+but a worse space complexity than another one
+and here there isn't a clear answer
+on which solution is better.
+It's gonna depend on the use case of that solution,
+the use case of that algorithm,
+but the point is when you're comparing two solutions
+and trying to figure out which is better,
+you're really comparing their space-time complexities.
+And of course when we say complexity analysis,
+we really just mean figuring out what the complexity
+of an algorithm or the solution is.
+That's really all that the word analysis means.
+The last thing that I wanna do in this video
+is tie the concept of complexity analysis
+back to data structures.
+Because we said that it's the foundational knowledge
+that you need to better understand data structures.
+So, recall from the previous videos
+that we defined data structures as sets of data values
+like, let's say these numbers one, two, and three,
+the relationships between these values.
+So, maybe we can add arrows to kind of
+show that the numbers are connected in some way,
+maybe in one direction.
+And then the set of operations and functions
+that you can apply on these values.
+So, for instance, maybe here you could remove
+the number two from the set of data values.
+That would be some form of operation or function.
+So, that is a data structure
+and it turns out that these operations
+are functions like the removal of the number
+that I just showed, have time complexity
+and space complexity ramifications.
+In other words, to perform an operation or a function
+on a given data structure or rather on the underlying set
+of data values, is gonna take time
+or is gonna take up memory.
+And similarly the relationships between the data values
+and a data structure are gonna have
+time and space complexity ramifications.
+And as we said in previous videos,
+there are a lot of data structures,
+there are a lot of data structures that look different
+and have different relationships between the data values.
+And what that means is that
+different data structures are gonna have
+different time complexity and space complexity ramifications
+for the functions and operations that they support.
+And the key thing for you when you're gonna be dealing
+with a coding interview problem
+is not only to figure out what data structure
+best allows you to solve the problem,
+but also what data structure allows you to do so
+with the best time complexity
+or with the best space complexity.
+This means that you're gonna have to be very familiar
+with all of the space-time complexity ramifications
+of the various popular data structures.
+And of course that's what we're gonna be covering
+in the upcoming videos of the data structures content
+on Dev Elite.
+So with that, this was a very, very high level overview
+of complexity analysis.
+I hope that you now have a better idea
+of what this concept is.
+It's actually fairly simple if you think about it.
+It's just measuring how fast an algorithm runs
+and how much memory it takes up.
+And in the next couple of videos,
+we're gonna be diving into memory
+and into how to actually measure this complexity.
+So, I'll see you in those next two videos.
+Hey everybody,
+welcome to Dev Elite.
+In this video, we're gonna be covering the concept of
+memory.
+Now I know I'm gonna sound like I'm repeating myself,
+but bear with me for a second.
+In the previous videos
+of the data structures content on Dev Elite,
+I said that data structures are the foundational knowledge
+that you need to tackle coding interview problems.
+And I said that complexity analysis
+is the foundational knowledge that you need
+to better understand data structures.
+And that's true.
+But there's one more layer of foundational knowledge
+that you need to really understand
+both complexity analysis
+and in turn data structures.
+And that other layer of foundational knowledge is memory.
+And actually, I bet that once you finish watching this video
+about memory, a little switch will have been flipped
+in your mind
+and you'll have a lot more clarity
+around how things work when you write
+and execute code under the hood.
+Even the simplest code,
+like creating variables, for instance,
+this video will really help you understand
+why it works the way it does.
+And this will in turn help you understand
+why data structures work the way they do,
+why they have certain complexity ramifications,
+and so on and so forth.
+Now, before we dive into what memory is.
+I do wanna give one caveat
+which is that we could talk about memory for hours,
+we could have an entire course dedicated purely to memory.
+Memory is a very large topic area.
+There are a lot of computer science topics
+that are relevant to memory.
+In this video, we're gonna be simplifying a lot of things
+because we really wanna cover memory.
+For the context of coding interviews.
+We're gonna be giving you everything
+that you need to know memory,
+so that you can be well equipped for coding interviews.
+So if you do come from a computer science background,
+for instance,
+you will notice that we are glossing over certain things,
+or that we're being intentionally vague
+about certain things.
+Or intentionally omitting certain things.
+This is done on purpose, because we really wanna make sure
+that the topic in this video is purely relevant
+to coding interviews.
+With that, let's actually dive into the topic of memory.
+So when you write code,
+and when you execute code,
+one of the most basic things that you do
+is you declare variables,
+and then you use those variables later on in your code.
+For instance, you might declare a variable named foobar,
+and you might set that variable to be the integer one.
+Now, as you might imagine,
+behind the scenes, somewhere in your computer
+or through your program,
+this variable has to be stored
+'cause you're gonna be referencing this variable later on
+in your code, you're using this variable
+or using the variable foobar later on in your code.
+So it has to be stored somewhere.
+And of course, this is where memory comes into play.
+So what is memory?
+How do you think of the memory?
+There are a lot of ways that you can think of memory.
+One of my favorite ways to do so
+is to imagine it as this canvas.
+This canvas that lives somewhere in your computer
+that is bounded.
+And that is divided in a bunch of little slots.
+So here I've drawn out on the screen,
+such a canvas,
+where we've got 20 slots,
+as they start at zero
+and we go to 19.
+And the key point again, is that
+this is a bounded canvas,
+meaning there is a finite number of slots.
+And perhaps I should be a little bit more accurate
+and call these slots,
+memory slots.
+Because we are gonna be storing stuff in them.
+Now why did I repeat the fact that this is a bounded canvas?
+Because it's actually very important.
+Recall from the complexity analysis video
+that we were talking about space complexity,
+and we said that the less memory an algorithm takes up,
+the better it is.
+Why is that the case?
+Precisely because this memory canvas is bounded.
+We have a finite number of memory slots.
+And so I'm jumping the gun a little bit here
+but you can imagine that
+if all of these memory slots were taken up,
+for instance, here,
+I've depicted this canvas of 20 slots,
+where each slot is a memory slot.
+You could imagine that if all of these slots were
+somehow taken,
+whatever taken means for now.
+You would no longer have any available memory slots.
+Therefore, you want an algorithm to take up less memory
+or fewer memory slots.
+Okay, but so let's go back now.
+We have our variable foobar equals one.
+And so what happens under the hood,
+when you are executing the code that declares this variable
+is that your program is going to store this variable,
+namely the number one in a memory.
+So it's gonna store the number one in this memory canvas.
+So for example, your program might store the number one
+in memory slot four.
+As you can see, now we've got one memory slot
+that's taken up, so to speak.
+One memory slot that isn't free anymore.
+Now here you might be wondering,
+did I pick a memory slot number four arbitrarily?
+Did I pick it for a reason?
+And this is where we're gonna gloss over some things
+and we're not gonna dive too far into how your computer,
+your program picks memory slots,
+there are just a couple of things
+that are important to note.
+The first one is that
+your program will always store a variable in a memory slot
+or in a series of memory slots.
+And we'll get into that in a second.
+That is free.
+So for instance, if the memory slot number 12,
+let's say had been taken up, it had stuff in it,
+maybe it had another number,
+maybe it had the number two in it,
+your program would not have stored the number one in here.
+The second thing to note is that
+if your program for whatever reason,
+needed more than one memory block to store information
+to store a variable, for instance,
+it would store it in back to back memory slots.
+And so here we're gonna take a quick pause
+and look into how this number one is actually stored
+or represented under the hood in this memory slot,
+and then we'll go back to this idea
+of back to back memory slots
+if you need multiple memory slots.
+So the number one here,
+as it is very simply said
+that we're storing it in memory slot four.
+But how is memory actually represented?
+What is the unit that we use for memory?
+It turns out that memory
+is made up of just what are called bits.
+Bits are zeros and ones.
+So let me erase the variable foobar here.
+And if I write a bunch of back to back zeros and ones
+zero zero one zero one,
+those are bits.
+And this is what memory looks like.
+In fact, your computer only understands zeros and ones.
+When you store data in a memory slot,
+you actually store that data in the form of bits,
+and more specifically,
+one memory slot can hold eight bits.
+And that's actually called a byte.
+So these zeros and ones are called bits.
+And if you put eight of them back to back,
+you get a byte with the y.
+And so when you store data in a memory slot,
+you actually store a byte of data.
+Eight bits.
+If this is brand new material to you at this point,
+you might be wondering,
+well, how do we store information in just zeros and ones?
+How would we store the number one, in zeros and ones?
+Well, turns out that we can transform the number one
+in what's called a binary number,
+or a number that is in the base two system.
+And here, I'm really gonna gloss over this.
+So I would highly recommend if you have no idea
+what a binary number is,
+or what the base two system is,
+to look up the Wikipedia article on binary numbers,
+spend five minutes reading it
+and it will really give you everything that you need to know
+about binary numbers
+but for instance, the number one could be represented
+in a binary number as follows
+zero zero zero zero
+zero zero zero one
+the number two would be
+zero zero zero zero
+zero zero one zero
+The number three would be
+zero zero zero zero
+zero zero one one
+Every bit moving from the left to the right
+represents a new power of two.
+So the rightmost bit represents two to the power of zero.
+The second rightmost bit represents two to the power of one,
+then two to the power of two,
+two to the power three,
+and so on and so forth.
+Again, if you're confused here by binary numbers
+or the base to number system, I would highly recommend
+that you check out the Wikipedia article on binary numbers.
+But for the purpose of coding interviews here,
+what you really need to know
+is that any piece of data can be transformed
+into ones and zeros
+into base two format
+or binary number format.
+And then that piece of data is gonna be stored
+in blocks of eight bits.
+In other words, bytes.
+By the way, here,
+I should have mentioned that
+these binary number representations of the number one
+or the number two, number three are bytes
+'cause I put eight bits.
+And then these bytes are stored in the memory slots.
+So for instance, for the number one,
+this would actually be
+zero zero zero zero
+zero zero zero one
+Now here, if you're paying close attention,
+you may be wondering,
+well, wait a second,
+with one byte,
+which is eight bits.
+We don't have that many combinations of zeros and ones,
+it feels like we couldn't store
+that many data values with just one byte.
+And that's correct.
+One byte, which is eight bits
+only gives you two to the power of eight
+potential data values that you can represent
+'cause basically at each bit you have two options.
+So the first one here you have either zero or one,
+then you have zero or one,
+zero or one.
+So two times two times two, eight times.
+So in total, you have two to the power of eight,
+which is 256,
+potential data values that you can represent in one bite.
+And again, here,
+I'm glossing over certain things.
+So then how would we represent more data values?
+How would we store for instance,
+a number that's bigger than 256?
+Or this is where we would just
+increase the number of bits that represent that data value.
+Imagine we had 16 bits, for instance,
+imagine we had 32 bits, 64 bits.
+And by the way, you may have heard about 64 bit integers
+or 32 bit integers.
+It turns out that a lot of computer architectures
+or in a lot of programming languages,
+we represent integers,
+either in 32 bit format
+or in 64 bit format.
+In fact, if you come from a C++ background
+or Java background.
+You might know that the type int
+represents a 32 bit integer.
+The type long represents a 64 bit integer.
+So what that means under the hood is that in C++
+or in Java, if you're using an int,
+for instance, our one that we stored in memory slot four
+would likely be an int,
+we're actually gonna represent it using 32 bits.
+And 32 bits, is how many bytes?
+You do 32 divided by eight,
+four bytes.
+So our number one here
+would actually take up four bytes,
+which means that our program would need to store it
+in four back to back free memory slots.
+And now I'm finally going back to what I mentioned earlier,
+when I said that not only do you need a free memory slot
+to store data,
+but you also need back to back
+contiguous free memories slots
+if you're gonna need multiple memory slots.
+And since an integer is typically gonna be represented
+as a 32 bit integer, which takes up four bytes,
+or perhaps a 64 bit integer,
+which would take up eight bytes,
+if you're declaring along in Java, for instance,
+we are actually gonna need to take up more memory slots.
+And so here for the number one,
+the way it would be represented is
+we would have these bits here at data value four
+and then we would now have
+zero zero zero zero
+zero zero zero zero
+And here I'll just write a big zero to show
+that we only have zeros in the remaining blocks.
+Okay, so two things to note here.
+First of all, you might be a little bit confused
+as to why I left the byte that has the one as the first bit.
+Which this is really what represents the number one,
+or why I left it to the left
+and not to the right of our four memory blocks.
+And this has to do with a concept called
+endianness,
+that you can look up also on Wikipedia.
+It's written endianness.
+And this is a topic that's not relevant
+for the purpose of coding interviews.
+But if you're interested, you can look it up,
+it basically has to do with the ordering of bytes
+when you're representing a number in binary.
+But for now, just accept that we store the most significant
+byte to the left.
+The second thing that I want to say,
+and this is a very, very important point
+to really do pay close attention here.
+Integers, whether we represent them with 64 bits,
+or 32 bits,
+or 16 bits,
+eight bits, however many bits,
+the key thing to remember is that we are typically dealing
+with what are called fixed-width integers.
+So for instance, if you're dealing with a 32 bit integer,
+you know that it's always gonna be 32 bits,
+meaning that you know,
+it's always gonna take up four memory slots.
+If you're dealing with a long
+or a 64 bit integer,
+it's always gonna take up
+eight memory slots,
+because it's always gonna be made up of 64 bits.
+That's actually really important because this implies that
+when you're dealing with an integer,
+the number of memory slots that you're gonna be using
+for that integer is always a constant,
+it does not increase as your number
+or integer increases.
+If you've decided that you're dealing with a 64 bit integer,
+it will always take eight memory slots,
+that will always be a constant number of memory slots
+for that 64 bit integer.
+Very important
+and we'll see why that's important
+in some of the future videos.
+Okay, so now we've finally seen how the number one
+gets stored in memory.
+And we said that to store this number
+or program
+our computer needed to find
+four free back to back memory slots
+because we knew we were dealing with a 32 bit integer,
+we needed four memory slots.
+What would we have done if, for instance,
+memory slot five had been taken up for whatever reason,
+just assume something had already been stored there,
+before we stored the number one.
+Well, our program just wouldn't have gone here,
+it would not have tried scoring the number one here,
+it would have gone somewhere else
+were there four back to back free memory slots,
+maybe it would have gone to 16.
+Okay, so now the natural next thing
+that we might wanna store is a list of numbers.
+So for instance, imagine instead of the number one,
+we had wanted to store the list,
+one, two,
+let me erase stuff here at the bottom
+just to give myself a little bit of space.
+And imagine we had the list one, two.
+So the list one, two would be stored
+almost the same way that the number one is stored,
+except that we would now have the number two
+after the number one.
+So now basically our program would say,
+okay, we're storing two 32 bit integers.
+They both take up four memory slots.
+So together, they're gonna take up eight memory slots,
+we need to get eight back to back free memory slots.
+So in this case,
+it looks like four through 11 are free,
+or we're free before we stored the one.
+So we're now gonna store one here
+and two right here.
+So two would look like
+zero zero zero zero
+zero zero zero
+oh sorry, not zero
+one zero.
+That's the binary number representation
+or base two format representation of the number two.
+And then here, we would just put the big zeros to show
+that we have just zeros
+and so zeros for the last three bytes.
+And now we've just stored a list of length two in memory,
+if we wanna add a number, it's the same thing.
+Let's say we wanted to add the number three
+after this array.
+So we'll move the bracket, we'll put the number three,
+and it's the same thing we'd have
+now 12 back to back free memory slots
+that we would have to take up.
+So it'd be
+zero zero zero zero
+zero zero one one
+zero zero zero
+And again, keeping in mind that we have to make sure
+that there's nothing taking up a memory slot.
+So right now, if there were something,
+let's say, at memory slot 16
+or you know, maybe there was something at memory slot 18,
+we would not be able to have had a fourth number here,
+or rather, if we had had a fourth number,
+the array or the list of numbers
+would not have been stored starting at memory address four,
+it would have been stored,
+maybe starting at memory address zero.
+Now before we end this video,
+let's cover a few more important things related to memory.
+First of all, you might be wondering
+how do we store stuff like strings?
+Strings are very common in coding
+and you might have the string A, for instance.
+Now we're gonna cover strings in detail
+in the strings video of the data structures content
+on Dev Elite.
+But here very quickly, we can just say
+that we can actually map a character
+like the letter A to a number.
+And if for instance, you're familiar
+with the ASCII character mapping.
+ASCII is sort of like a table
+that people have decided on
+that assigns a bunch of characters
+like the letter A, a number.
+So for instance, A in ASCII is 65.
+Rather the ASCII code of A, capital A is 65.
+The ASCII code of capital B is 66.
+And so you can imagine that if you're dealing with a string,
+every character in the string is gonna be mapped to a number
+an integer using a mapping like ASCII for instance,
+then that number is gonna be turned into a bunch of bits.
+And then that string is gonna be stored
+as a list of numbers in memory.
+That's really how strings work at a glance.
+Again, we'll be diving into them
+in the dedicated video for them.
+The other important concept
+that I want to introduce here is the concept of pointers.
+So so far, we've only stored in our memory slots
+data that we said had been declared,
+for instance, in our code.
+Like a variable, foobar equals one.
+But it turns out, we don't only have to store
+that type of data in our memory slots.
+We could actually store if we wanted to
+the number of another memory slot.
+And by the way, I forget if I mentioned this
+earlier on in the video,
+but all of these numbers here actually have a name.
+They're called memory addresses.
+And also, it turns out that these memory addresses aren't,
+you know, one two three,
+they're actually stored in binary
+in base two format.
+And like I was saying,
+you can actually store in a memory slot,
+the memory address of another memory slot.
+So for instance, add memory slot two here.
+If I wanted to, I could store the address
+or the memory address of memory slot 16.
+So I would write in binary here,
+I'll write it in just normal numbers,
+but under the hood, it would be in binary,
+I could store 16.
+And basically what this would be conceptually,
+is a pointer from memory slot two
+with memory address two,
+to memory slot 16 with memory address 16.
+And you're probably starting to get ideas
+regarding why that might be useful, right?
+Instead of storing data here, you can just point
+to another memory address,
+or another memory slot that might have that data
+or that might have a relevant piece of data.
+And the beauty with pointers
+is that unlike with lists of numbers
+for instance, that we were talking about earlier
+where we stored the list one two three
+in these 12 back to back memory slots
+that were free.
+With a pointer, you can point to a memory slot
+that's super far away.
+Here we have memory slot two,
+that's pointing all the way to memory slot 16
+and there's a bunch of data in between, doesn't matter.
+So that's a pointer.
+Very important.
+A final note that I wanna make here before we do
+a quick summary of everything that we've covered,
+is that it's important to realize that your program
+or your computer,
+and again here I'm being intentionally vague,
+so as to spare you some of the details
+that don't really matter
+and are a bit too complicated
+and irrelevant for coding interviews.
+But your computer can access
+all of these different memory slots directly, very quickly.
+So for instance, accessing memory slot four
+or accessing memory slot seven,
+or accessing memory slot 17
+can be done extremely quickly,
+you can think of it almost as
+a sort of direct connection to a memory slot.
+Or perhaps an even better example is,
+if you've written any code,
+you've probably manipulated arrays before lists, right?
+And you probably know that you can access values
+in an array at a given index very easily.
+It's a very inexpensive operation, so to speak.
+And as a side note, we're gonna understand
+why that is in the upcoming video on arrays.
+But you can think of this memory canvas
+in exactly the same way
+your computer
+or your program is able to access memory slots
+given a memory address extremely quickly.
+And so this is why we sort of referred to
+accessing a memory slot
+as a truly basic elementary operation.
+An operation that doesn't take much time.
+Okay, so now let's recap the important points
+that we covered in this video.
+First of all, you can think of memory
+as this bounded canvas of slots
+of memory slots that lives somewhere in your computer.
+And that can store data.
+It's very important that it's bounded,
+because that means that you have a limited amount of data
+that you can store in it.
+It is possible to run out of memory,
+which is why we care about space complexity.
+How many memory slots are in this memory canvas
+is sort of irrelevant for the purpose of this video
+and for the purpose of coding interviews.
+Again, the really important part is the fact
+that it's bounded.
+Obviously, you can imagine that in a computer,
+there are a lot of these memory slots.
+But the point is, they are limited in number.
+Information that's stored in these memory slots,
+is stored in base two format
+in binary number format as bits,
+say zeros and ones.
+One memory slot can fit eight bits,
+which is called one byte.
+When you're storing an integer in memory,
+that integer is typically a fixed-width integer,
+meaning that it's either 32 bits,
+or 64 bits,
+or 16 bits, eight bits
+point is, we know how many bits it is
+or how many bytes it's gonna take up.
+If it's a 32 bit integer, for instance,
+it's gonna take up four bytes,
+so four memory slots.
+When you're storing data in this memory canvas.
+If it's gonna take more than one memory slot,
+it's gonna have to be stored in
+however many memory slots are needed to store it.
+Back to back and free.
+So if you're storing a list
+of three 32 bit integers, for instance,
+that list is gonna have to have 12 memory slots.
+And those 12 memory slots are gonna have to be back to back.
+And of course, they're gonna have to be free.
+Any type of information can be transformed
+into base to format
+and therefore transformed into bits
+that can be stored in memory.
+And finally, there's this cool feature,
+so to speak about memory,
+which is that at any memory slot,
+you can actually store the memory address
+of another memory slot in base two format
+in binary number format.
+And as we explained, that allows you to not have to
+store specific data at a memory slot
+but instead point to another memory slot
+that stores that data.
+And that's called a pointer.
+For the purpose of coding interviews,
+accessing memory slots,
+is sort of the most basic operation that you can think of.
+So for example,
+if you're accessing a fixed-width integer,
+like a 32 bit integer,
+you know that you'll be accessing four memory slots.
+And that's gonna be a basic elementary operation,
+a very inexpensive operation from a time point of view.
+And that's memory.
+That is memory from a very high level
+and further context of coding interviews.
+With that, I hope that you found this video informative.
+In the upcoming videos, we're gonna be looking at
+how specific data structures are stored in memory
+and why their functions
+and operations therefore have
+specific space-time complexity implications.
+And I'll see you in the next video.
+Hey everybody, welcome to Dev Elite,
+In this video, we're going to be covering the logarithm.
+And more specifically, we're going to be explaining
+exactly what the expression log of N means
+in the context of complexity analysis.
+The logarithm or log of N is an incredibly
+important concept in algorithm analysis.
+And in turn in coding interviews.
+It appears very frequently and candidates are
+often very scared of it.
+The reason candidates are scared of the logarithm
+is because number one it looks very math related
+and admittedly it is math
+and number two they don't really grasp what it means.
+And if they do grasp what it means,
+they don't really get the intuition behind it.
+How it applies to complexity analysis,
+and what it really means.
+So in this video, we're going to first look at
+the mathematics behind the logarithm,
+so that we can really understand it at its core
+and then we're going to look at the intuition behind it.
+To really understand how it relates
+to complexity analysis, why it's even a thing,
+and why it's so important.
+I really hope that by the end of this video,
+if you are scared of the logarithm,
+you won't be at all anymore
+and I hope that you'll appreciate
+why it's such an important concept in complexity analysis.
+So let's look at the math now.
+In front of me, I've written the most important line
+about the logarithm that you need, this is essentially
+the definition of the logarithm.
+We say that the logarithm,
+log of the number x,
+given a base b, is equal to y
+if and only if, this means if and only if
+b which is the base,
+and we'll get into what that is in a second,
+b to the power of y is equal to x.
+So the logarithm of the number x given the base b
+is equal to y if and only if b to the power of y,
+is equal to x.
+So the first thing that's very important to understand
+which may not have been obvious if you've seen
+the expression log of N before with regards
+to complexity analysis, is that when you talk
+about the logarithm, you have to specify a base.
+So here the base is b and it's denoted
+like a little b right below the log,
+and this is very important.
+Basically if you write log base three,
+let's say of the number 10
+and then you write log base 10 of the number 10
+you're gonna get very different results
+cause as you can see
+the equation would then be different.
+B here would either be three or 10.
+Now this is where you have to realize that
+in computer science and in coding interviews,
+when we talk about log of N or log of x
+we always assume that the base is two.
+In computer science we always assume
+that we're dealing with
+what's called the binary logarithm,
+which is logarithm base two.
+So logarithm base two of x
+would be equal to y
+if and only if
+the number two to the power of y were equal to x.
+And perhaps we can already make this a little bit more clear
+since we're going to be talking about log of N
+not log of x, let's remove the x and replace it with N.
+So log base two of N is equal to y
+if and only if two to the power of y is equal to N.
+Now again, in computer science or in coding interviews,
+we always assume that the logarithm is the binary logarithm
+meaning the log base two,
+so we don't even write the base two here.
+We just say log of N equals y
+if and only if two to the power of y equals N.
+Now where this might be confusing
+for some of you who do have a math background,
+is that in math, typically the base that we use
+when we say log of N without specifying the base is base 10.
+We use log base 10 in math typically.
+If that's what you were used to,
+just get that out of your mind,
+and for the purpose of computer science
+and coding interviews,
+you're basically always gonna be dealing with log base two.
+So let me move this log here,
+just to put it a little bit closer to the N
+so now, what does this relation imply?
+It basically means that log of N is the power
+to which you need to put two to get N.
+This actually isn't that difficult
+of an equation to reason about.
+For instance, this means that log of one
+is equal to the power that we need to put two to,
+repeating two here, to get one.
+So what is that power? Well it's zero.
+Log of one is zero, because two to the power of zero
+is equal to one.
+So let me move that up here.
+Similarly, what would log of, lets say, four be?
+Of course we're dealing with log base two.
+Well, log of four would be the power
+that you would have to put two to, to get four.
+So, two to the power of what equals four?
+Well this is pretty easy,
+two to the power of two equals four.
+So log of four is equal to two.
+I'm gonna write it up here.
+Log of four is equal to two.
+We'll go through one more example
+just to prove that we really understand this relation.
+So, here let me make this smaller and erase it.
+Let's go with, let's say log of 16.
+Log of 16 is equal to what?
+Well two to the power of what is equal to 16?
+That's gonna be two to the power of four.
+two to the power of four is equal to 16
+So log of 16 is equal to four.
+So I'll repeat it one final time
+to find the logarithm or rather the binary logarithm,
+the logarithm of base two of a number.
+We have to ask ourselves,
+two to the power of what is equal to that number?
+And if we solve this then we find log of N.
+This question mark here is log of N.
+Okay, so let's try to get into the intuition a little bit.
+What does this mean exactly?
+Well let's look at powers of two.
+When you increase a power of two,
+what are you really doing?
+You're doubling what ever number you previously had, right.
+If you have, for instance, the number two to the power of x,
+and you do two to the power of x + 1,
+you are multiplying that number by two.
+You are doubling that number, right?
+Two to the power of four is equal to,
+two to the power of three, multiplied by two.
+Two to the power three is eight.
+Eight multiplied by two is 16,
+which is two to the power of four.
+So, whenever you increase the exponent
+in two to the power of something by one.
+You are doubling that number.
+That's really important.
+Let me rephrase it another way.
+When you double the number N in this relation here
+two to the power of question mark equals N.
+When you double the number N,
+you are only increasing this question mark by one.
+We'll do one more example in case it's not clear,
+if you have two to the power of four equals 16.
+And now you double 16, which is the number N here.
+You double 16 to let's say 32.
+All you have to do to the left side here
+is increase the exponent by one.
+So this is suddenly, two to the power of five equals 32.
+So as you can see in this relation,
+two to the power of question mark equals N.
+As N doubles the question mark
+only increases by a tiny bit, by one.
+Even when N is gigantic.
+And you can see this more clearly
+when you start to increase the exponents by a bit more.
+For instance, if we write out two to the power of 20.
+You can use a calculator to compute this.
+Two to the power of 20 is a number
+that's greater than a million.
+It's a million something, so we'll right one M.
+If you look at two to the power of 30,
+where we've increased the exponent only by 10.
+Right, so we went from 20 to 30, this is just plus 10.
+Two to the power of 30 is actually over a billion.
+It's a billion and something.
+A billion and 73 million actually.
+So we'll write one B for now.
+What I'm trying to get at
+by showing you all of these examples is that
+the more N increases, the more it doubles,
+the more it just increases.
+This question mark, the exponent,
+this question mark right here.
+Increases by a tiny amount and since this relation,
+two to the power of question mark equals N,
+is equivalent to log of N equals question mark,
+right, this y here is equal to the question mark.
+This tells us what log on N really represents.
+Log of N increases only by a tiny amount as N increases.
+When N doubles, log of N only increases by one.
+And so this is why,
+if we tie this back to complexity analysis,
+when we have an algorithm
+with a time complexity of log of N,
+that is incredibly good
+because that means as the input increases,
+as the input doubles,
+the number of elementary operations that we're performing
+in the algorithm only increases by one.
+So, you can start to realize that a log of N complexity
+is exceedingly better than a linear complexity.
+Even though O of N, linear time
+is already pretty good for an algorithm.
+Log of N time, is gonna be way better
+as the size of your input increases.
+And here we can draw out that graph that you may have seen
+if you looked it up, the complexity graph,
+where, let me give myself a little bit more space,
+if you have a graph like this,
+where the x-axis is here represents the number N.
+Then a linear function or a complexity,
+a linear complexity, would look something like this,
+where the complexity increase linearly with N.
+Right, so when N is equal to lets say a billion.
+This line is gonna be at a billion,
+it's gonna be somewhere up here.
+Where as the log of N function,
+looks something like this.
+It goes up at the very beginning,
+as you saw at the beginning, log of one is equal to zero,
+log of four is equal to two, log of eight is equal to three.
+So, you increase modestly at first,
+if we were to look at this on a smaller scale,
+it would look something like this, the log function.
+But then, well it wouldn't go down here it would plateau.
+Well and the origin would also look a little different,
+because log of one is equal to zero,
+and then if you're at like log of 0.5
+you actually go in the negatives.
+But here for the sake of this example,
+lets just go with this graph.
+But then here the more you get bigger,
+the more N becomes big,
+the less the log of N function changes.
+Like we said up here, when N is a million
+so let's say N is super far to the right here.
+Log of N will only be 20.
+When N is gonna be a billion,
+so way farther to the right,
+log of N is still only gonna be 30.
+It will have only increased by 20.
+So really, for the last time,
+I hope that you understand here
+why log of N is so powerful
+because the complexity of log of N
+really represents a complexity that does not increase fast
+as the size of the input increases.
+So, at this point hopefully you understand
+the mathematics behind the logarithm,
+or the binary logarithm, how it works under the hood.
+Hopefully you understand why log of N is so important.
+Why log of N complexity is such a good complexity to have,
+for an algorithm.
+And now before we end the video,
+let's just look at a couple of examples
+in coding interviews or in algorithm analysis,
+where you will find yourself with the log on N complexity.
+So, let me make these charts much smaller,
+to give ourselves some space.
+And we'll look at a very simple example,
+where imagine you have an array of length N.
+Lets start with an array of length, I don't know, eight.
+Zero, one, two, three, four, five, six, seven,
+you have this array of length eight.
+And image your algorithm had a bunch of steps,
+but at every step it eliminated half of the array.
+So, here imagine you were to run a function
+that implemented this algorithm,
+it took this array of length eight as an input.
+And the first thing that it did is cut the array in half
+and it said, you know what, this whole right half here,
+I'm just not gonna look at it and then the next step
+that it did is, it took the resulting array
+of length four and it cut it in half, here.
+And it said, Okay, so I'm gonna eliminate,
+again, the right side, for what ever reason,
+let's arbitrarily eliminate the right side.
+And then it did the same thing.
+We're gonna cut again the array,
+and we're gonna eliminate the right side.
+So now we're left with zero
+and we perform something on the zero.
+So as you saw we had an array of length N,
+and array of length eight.
+At every step of the way, we cut that array in half.
+And so in total the amount of operations
+that we performed with this algorithm,
+on our original array, is basically equal to log of N,
+or in this case log of eight.
+Remember, log of eight is equal to three.
+And here we performed three operations,
+we cut the array in half, cut the array in half,
+and then cut the array in half.
+'Cause basically at every point in the algorithm
+we were eliminating half the input.
+Take this array of length eight again.
+Zero, one, two, three, four, five, six, seven,
+and now imagine we double this array.
+We double it to 16, right?
+We double the length of the input
+and we apply the exact same algorithm
+on this new doubled array.
+The only extra operation that we're gonna do
+is the one were we split the array in half here
+and eliminate this half.
+So, this entire half that we doubled,
+we basically eliminate it in one operation.
+That means as the input increases,
+as the input doubles in size.
+We only perform one extra operation,
+and that means that this algorithm,
+this random algorithm that we kind of created here,
+which looks a lot like binary search,
+but that's a different story.
+You can check out the binary search question
+right here on Dev Elite.
+But that means that this algorithm
+has a time complexity of log of N.
+The number of operations that we perform with this algorithm
+increases only by one as we double the size of the input.
+So, it roughly maps to log of N.
+And I say roughly because, of course,
+when we're gonna be dealing with sizes of the input
+that are not exact powers of two,
+things might fall apart a tiny bit.
+You might have to round down or round up log of N,
+if N isn't a perfect power of two.
+But overall it's roughly log of N.
+Another classic example of a log of N run time algorithm
+is one where, instead of dealing with an array
+that you're cutting in half every time,
+you're dealing with a binary tree
+that you're cutting in half every time.
+Now here I'm jumping the gun a little bit
+with respect to binary trees
+'cause we're gonna be covering them in their own video.
+But very quickly you can imagine this structure called
+a binary tree, that looks like a tree,
+where every element in the structure
+has two children elements,
+that kind of look like a tree
+if you write them out like this.
+You can see here we kind of have
+two children elements whenever we go down one level,
+and here if we had an algorithm that worked
+to eliminate half of the tree every time.
+Let's say we start up here.
+Let's say that this is like a maze,
+it's almost like a maze where
+maybe at the beginning of the maze
+we have to pick a path every time.
+We start at the top, if we pick to go down this path,
+we are affectively eliminating this entire path here.
+So now we're here.
+If we pick to go down this path now,
+we are affectively eliminating this entire left path.
+Then if we pick to go down this path,
+we are affectively eliminating this entire path here.
+And so you can see how with this structure
+every node has two children, you have to assume that.
+That's what's called a balanced binary tree.
+Then going down this tree
+where you eliminate half of the nodes at every level
+would be an algorithm that runs in log of N time.
+And so you can really think of algorithms
+that have a time complexity,
+and by the way the same is true for space complexity,
+but that have a time complexity of log of N,
+you can really think of them intuitively
+either by asking yourself am I eliminating half of the input
+at every step of my function?
+Am I basically cutting down the size of my input
+in half every step of the way?
+If yes, then I'm likely dealing with
+the log N time complexity.
+Assuming I'm not performing auxiliary operations
+at every step, cause that might increase my time complexity.
+And similarly you can also ask yourself,
+if I double the size of my input
+am I only going to be performing one extra operation?
+So, if the tree here,
+it turns out that one of the properties of trees
+is that at the very bottom level of a tree,
+so here what I'm circling in green at the very bottom level,
+you actually have roughly half of the nodes
+in the entire tree at the very bottom,
+if you're dealing, again, with a perfect tree
+that has the same amount of nodes
+at every node, the same amount of children nodes.
+And so you can imagine that
+if you were to double the size of this tree,
+you would be adding basically
+an entire new level down here, right?
+You would be doubling the nodes down here.
+But all that you would be doing here
+would be performing one extra operation,
+because, again, you would start at the top here,
+you would still eliminate the entire right half of the tree.
+Let's say you were eliminating the right.
+And eventually you find yourself down here.
+Down here, I know I'm scribbling a lot,
+but you find yourself down here
+and you do one more operation where you eliminate half,
+probably you eliminate this right half,
+and you end down here.
+So, that is the logarithm
+as it relates to computer science
+and to coding interviews.
+I hope that you're now no longer afraid,
+if you were afraid before, of the concept of log of N.
+Hopefully you really understand what it means
+for an algorithm to have a log N complexity.
+It's a very important concept
+that's not as complicated as some people make it out to be.
+If you explain it properly and that's that.
+I'll see you in the next video.
+Hey everybody, welcome to Dev Elite.
+In this video we're gonna be covering Arrays.
+Arrays are one of the most fundamental,
+perhaps the most fundamental data structures of all,
+you've probably all interacted with them before.
+If you've done any kind of coding,
+you've likely declared an Array, manipulated an Array
+or perhaps a list in Python.
+That's what Arrays are called in Python.
+And so in this video we're gonna be looking
+at Arrays in detail, how they work under the hood,
+because that's gonna be very enlightening.
+It's gonna explain why certain things that
+we take for granted about Arrays work the way they do,
+and we are gonna make sure that we're on
+the same page with regards to all of the operations
+and functions and things that you can perform on an Array
+or with an Array as well as
+their space-time complexity implications.
+So on that note,
+let's look at how Arrays are stored in memory.
+We briefly mentioned this in the memory video of
+the data structure content on Dev Elite.
+So if we go back to that memory canvas that
+we had in that video, I've drawn it out here.
+We've got this bounded memory canvas with a memory slots.
+Each slot holds a byte which is eight bits
+binary number of eight bits.
+And if we wanna store an Array,
+if we wanna store a list of stuff,
+let's say integers for simplicity,
+so let's imagine that we've got the list one, two, three.
+Then our operating system would transform
+all three of these integers into their binary number format.
+For the purpose of this example,
+we're gonna be using 64 bit integers,
+but they could also be let's say 32 bit integers,
+and our operating system is gonna go into the memory canvas,
+find a series of back to back memory slots that are free,
+that have enough space to allocate
+or to hold three integers.
+So if the three integers are 64 bit integers,
+that means that they each take eight bytes
+or eight memory slots.
+So we need eight times three memory slots
+equals 24 memory slots back to back that
+don't have anything in them.
+So, so far we're just reiterating
+what we said in that video on memory.
+So here let's grab 24 memory slots.
+We're gonna start, let's say at three,
+so three we would have to go all the way to 26 I believe.
+So these memory slots here
+are going to be taken up by our Array.
+Let me just make that a little bit thicker,
+that way we can really clearly see
+where our Array is stored.
+And again, to be clear, we have three integers.
+Each of the three integers takes up eight memory slots.
+So for instance,
+the first integer will be these three slots at the top here,
+and these five slots here.
+That would be the first integer,
+that would be integer one stored there in memory.
+So this is what happens under the hood.
+Now you may have noticed that we said that
+the operating system allocated
+24 memory slots for this Array.
+It didn't just randomly store the Array,
+it had to find 24 slots of free memory.
+And it's possible that for instance,
+slot 27 here may have been taken up by something else.
+Who knows.
+The point that I'm trying to make here is that
+the number of memory slots which is directly linked
+to the length of the Array.
+In this case, an Array of length three is fixed
+and that's very important
+because this is gonna introduce
+the first sort of subtopic of Arrays which is,
+there are actually two types of Arrays.
+There are Static Arrays.
+I'll write this down at the bottom and Dynamic Arrays.
+Now the interesting thing here is that
+depending on your programming background,
+you might be familiar with Static versus Dynamic Arrays
+or you might not be familiar at all.
+Maybe you've never heard of Static or Dynamic Arrays.
+I would bet that if you come from a C plus plus
+or Java background,
+you have heard the terms Static Array, Dynamic Array.
+If you come from a Python or Java script background,
+you probably haven't heard of these two terms,
+but they are very important
+and so we're gonna cover them right now.
+This Array that we declared here,
+which we said once again has
+24 memory slots allocated to it.
+A fixed number of memory slots,
+24 is what's called a Static Array.
+And so in Java or C plus plus, when you declare an Array,
+you've probably noticed that
+you have to declare the length of the Array.
+You have to specify that length
+because you are specifically telling your operating system,
+hey, I need exactly an Array of length three
+and therefore the operating system
+knows to look for exactly 24 slots.
+Why is that important?
+Because if you didn't tell the operating system
+how big your Array would be,
+the operating system wouldn't know.
+And so would it try to allocate
+an infinite amount of back to back memory slots?
+No, that wouldn't really make sense
+cause then you would run out of memory super fast.
+So the idea behind a Static Array is that
+you specify the length of your Array
+and in memory that Array will have that length,
+the equivalent number of memory slots allocated to it,
+and that's it.
+It'll never change.
+And so at this point
+we're gonna put a small pause on Dynamic Arrays.
+We're gonna get back to that in a little bit.
+So if you come from a Java script
+or a Python background where you're used to Arrays that
+have whatever length you want them to have,
+cause you can just add elements to them whenever you want.
+Hold that thought,
+we'll get back to that
+and that'll be related to Dynamic Arrays.
+But for now,
+let's just assume that all Arrays always static.
+So what are some of the common operations that
+we wanna perform on an Array?
+Well, perhaps the most common operation is
+to read a value at a given index in an Array.
+You probably know that
+any code you can write something like,
+let's say you have an Array that's called Array
+and you wanna access the element at index,
+I don't know two, you would say Array at index two
+or something similar to this
+depending on your programming language.
+And you've probably been told before that doing this,
+accessing an element in an Array at a given index
+is a very basic operation that
+is performed almost instantly.
+Well, what does instantly really mean?
+This is where our new knowledge
+about complexity analysis
+and big O notation comes into play.
+When we say that accessing an element at
+an Array is instant, it means that it runs in constant time.
+It never changes regardless of how big your Array is,
+and we can see why that is from this memory canvas here.
+When our operating system stored our Array,
+it knew that it started at memory address three
+and similarly it knew that every integer in
+the Array was a fixed width integer, a 64 bit integer,
+and the fact that it's a fixed width integer
+is really important
+because fixed width implies it never changes
+with further implies that it is a constant
+and so we know that every integer in this Array that
+starts at memory slot three
+has eight memory slots allocated to it.
+So we know that the first integer
+will start at memory slot three.
+We know that the second integer will start
+at memory slot three plus eight,
+so three plus eight is 11 this is where
+the second integer will start.
+And then we know that the third integer is gonna start
+at memory slot 11 plus eight
+or three plus 16 for the third integer.
+So three plus 16 is gonna be 19
+this is where the third integer starts.
+And so you can start to see that
+when we are accessing an element in an Array
+at a given index, all that's really happening behind
+the scenes, is our operating system is finding
+the memory address with that starts the Array.
+In this case three, we know that.
+Then it's saying, well,
+how many bytes or memory slot does one element take up?
+In our case here, we know that
+we're always dealing with a 64 bit integers.
+That's what we said at the beginning,
+so eight bytes, so the operating system knows that
+one element is gonna be taking eight memory slots.
+And then it says, okay, what index did you specify?
+Let's say we wanted to access Array at index two,
+well Array at index two is gonna be not eight bytes,
+but 16 bytes or two multiplied by eight
+where eight is the number of bites that
+one element takes up.
+So the start address, which is three plus two
+times eight which is 16 equals to 19
+that is where our third element
+or element at index two is located.
+We know the memory address at the start of the Array three.
+We know that because
+the operating system keeps track of that,
+we know that we're always dealing with elements that
+take up eight bites.
+This is a constant factor,
+this number eight never changes.
+We know the index that we're looking for
+cause we provided it
+and we're just giving a simple multiplication.
+Doing a multiplication is an elementary operation
+and you can even imagine that behind
+the scenes if you're doing a multiplication,
+you're probably performing some sort
+of operation on two binary numbers of fixed width.
+And so again, this is gonna be a constant time operation
+and so in total you are left with a constant time operation
+to access an element at a given index.
+So accessing an element
+or getting an element in an Array is O of one,
+it's constant time.
+Perhaps I'll write it at the bottom so that
+we have it as a reference for the end of the video.
+So we have getting an element in an Array
+which has constant time complexity.
+And then you can also imagine that
+as far as space complexity is concerned,
+we're not using any extra memory to get an element.
+So it's also gonna be constant
+space complexity to get an element.
+Okay, what about the other operation that's similar to get,
+which has set when we want
+to overwrite an element at a given index.
+So for instance when we say you know,
+Array at index two equals five
+when we're trying to overwrite an element that an index.
+Well here it's very similar to getting an element.
+We know exactly where index two is cause we can do
+the same computation where we get the starting address
+and we add, you know we multiply
+the index by the number of memory slots
+or bytes that each element takes up,
+so we can immediately find
+the memory slot at index two which is 19 in this case.
+And all that we do is we overwrite the next eight blocks,
+which are a fixed number of walks.
+We're basically just swapping new binary numbers
+with old binary numbers
+and we know that we have a fixed amount of binary numbers.
+So setting an elementary
+or overriding an element in an Array
+is also gonna be constant time
+and constant space cause we're not changing
+the amount of memory that we're using up.
+We are using up the same amount
+of memory every time, the same amount of memory that we had.
+Doesn't matter if the Array is big,
+if the Array is tiny, it doesn't change.
+Here, we're gonna write, let me erase this,
+but we're gonna write O of one constant time and space.
+Okay, so what are some of the other operations
+or things that we do with the Arrays?
+Well, the first one that
+perhaps we should have mentioned a little bit earlier
+is when we actually initialize an Array, right?
+When we created this Array and first stored it in memory,
+what did we do?
+Let's remind ourselves really quickly.
+We said, hey, operating system,
+we have an Array of fixed length or we're specifying
+the length, which is three in our case,
+but actually I shouldn't use the word fixed.
+We did specify the length but
+the length was really an arbitrary number.
+The length was length N and it just so happened that
+for us it was three but it could've been five,
+it could have been 10, it could have been 20 billion.
+Right, so we specified a length N
+and then our operating system said,
+okay, I'm gonna go in memory,
+I have access to all of my memory slots
+and I'm gonna find N multiplied by eight memory slots that
+are free and that are back to back.
+Again the multiplied by eight is
+because every element takes eight memory slots
+at least if we're dealing with 64 bit integers,
+but that is a fixed amount.
+But the point is you're doing your,
+the operating system is gonna
+then store stuff in eight multiplied by N memory slots.
+So that is gonna be, I guess I'll call it,
+init for initialize.
+So init, which is initialize is gonna be O of,
+and here I'm gonna be overwhelmingly detailed.
+It's gonna be O of eight multiplied by N,
+and again, like I said in the previous video on
+big O notation, we can remove the eight like this.
+Eight doesn't actually make sense.
+It's a constant, this just means that when your Array,
+the Array that you're dealing with has a size N,
+as N increases the time that it takes to initialize
+the Array, the number of elementary operations that
+your operating system is gonna be performing
+increases linearly with respect to N.
+Yes there's this eight
+because we're dealing with 64 bit integers
+which have you know eight memory slots each eight bytes.
+Point is that's a constant, you forget about it.
+So here, let me just erase this again
+and we're gonna say O of N time and also, O of N space.
+Because you are taking, eight times N memory slots,
+so O of N space, O of N memory.
+Okay, what are some other operations that
+we perform on Arrays?
+Well, one of them that's extremely common is
+this traversing through an Array, right?
+You can think of it as a four loop.
+When you do a four loop through an Array,
+what are you doing?
+You are traversing through every element in the Array.
+And so here you can imagine under the hood that
+the operating system is gonna traverse every memory slot.
+How many memory slots are there?
+Well eight multiplied by N,
+if you're dealing with 64 bit integers.
+So traversing, we'll call it traverse,
+traversing an Array is gonna be O of N time.
+It's actually gonna be O of one space
+cause you're not using any extra space.
+So perhaps I should actually specify
+the space complexity just so that we are very clear.
+I guess I'll just erase Static and Dynamic for now.
+Get and set we're of one a space time.
+So ST, in it was O of N space time ST,
+traverse O of N time and O of one space.
+Because think about it when you're traversing an Array,
+assuming you're not doing anything else right,
+cause you might be performing auxiliary operations
+or auxiliary things and that might affect it,
+but if you're just traversing just you know,
+walking along, walking down those memory slots,
+it's gonna be O of N time
+cause you're traversing N times eight memory slots,
+but you're not doing anything in terms of memory,
+you're not scoring anything new, so constant space.
+And this traversal here ends up applying to all sorts
+of common Array operations that you may have used in
+the past, so here I'm gonna think of
+specifically for Java script and Python.
+When you map an Array to something else,
+when you filter values in an Array,
+when you reduce values in an Array,
+all of these sort of built in Array methods that
+end up servicing the entire Array,
+they are gonna be O of N time,
+assuming you're not doing any auxiliary operations that
+are very taxing at each element.
+And the space complexity is gonna depend on whether
+or not you're doing this in place in the Array or not.
+So if you're mapping an Array to a new Array
+and you're creating a brand new Array of the same length,
+well then that would be O of N space,
+which by the way brings us to the next operation.
+The next operation that you often perform with
+Arrays which his copy.
+You often copy Arrays and when you copy Arrays,
+that is gonna be O of N space time
+cause when you're copying you are traversing
+the entire Array and you're then saying to
+the operating system, hey,
+I just traverse through an entire Array
+of length three or of 24 memory slots
+and I need you to find a new 24 slots that
+are back to back and free in memory,
+I need you to copy all these values over there.
+So you are traversing an O of N
+and then you are creating
+or allocating another N memory blocks.
+So that's gonna be O of N space, O of N extra memory.
+And the space find complexity implications
+of copying are very important.
+The fact that copying is a relatively intensive operation,
+is very important.
+You often see people who are fairly new
+to algorithms and data structures do this mistake
+where they will just very casually copy an Array,
+you know, they'll use built in methods like in javascript./
+or Python, you can literally use the co-N
+and they will copy Arrays left and right.
+They'll do this in a four loop.
+So you know there'll be, for instance,
+iterating through an Array through N elements in
+the Array and at every element they'll make a copy of
+the Array for whatever reason because it's very simple.
+It's just one line.
+But that's an O of N operation that you're doing every time.
+Cause every time you're asking the operating system,
+hey, I need you to copy this entire Array and find a new,
+you know, 24 blocks of memory slots
+and memory that are free and so on and so forth.
+So do keep in mind that copying an Array is,
+O of N space-time complexity.
+Now we get to one of the most important operations,
+which we haven't covered yet, which is insertion.
+Inserting a value in Array, but not setting,
+setting here we meant overwriting a value in an Array.
+Now we're talking about inserting a value in an Array,
+either in the middle of the Array,
+at the end of the Array or at the beginning of the Array.
+So we'll put insert here,
+an insert is gonna actually be a pretty bad operation.
+Because let's think about what happens behind the scenes.
+If you have this Array that
+we just declared here that takes up 24 memory slots
+and we wanna insert a value either, you know,
+at memory slot 19 so maybe we wanna insert a value.
+You know, we have an Array that is you know, one, two, three
+and we wanna put here right before the three,
+but after the two we wanna put five.
+Okay.
+Imagine we wanna do that.
+So what's gonna happen here?
+Well, so first of all, we can clearly see that
+if we wanna put something here like right before
+the three or right before memory address 19
+we're gonna have to somehow shift
+all of these blocks, right?
+All of the eight memory blocks that
+had been allocated to the three are gonna have
+to be shifted to the right.
+Otherwise we're not gonna be able to put something in there.
+But the problem is that right here,
+after memory block 26 we haven't allocated more memory.
+Remember that we said that this was a Static Array,
+meaning that we specified the length,
+we told the operating system,
+hey, this is how much memory we need.
+And we had to do that.
+Otherwise the operating system wouldn't know
+how much memory to allocate.
+And the operating system cannot guarantee that
+there's not gonna be
+something stored here at 27 for instance.
+So not only do we have to shift all of these eight blocks,
+we don't know if we can sift them to the right.
+And so if we wanted to maybe insert the five at
+the end of the Array, maybe we didn't wanna put it in
+the middle, we wanted to append it at the very end,
+we'll be facing the same problem
+where we wouldn't be able to put it here
+because it's possible that this would be taken up.
+And this is even more applicable if we wanted to put
+the five at the beginning of the Array,
+if we wanted to put the five at the beginning of the Array,
+that would be right here before memory block three,
+so we would have to shift the entire,
+basically our entire Array.
+We would have to shift it eight blocks
+or eight memory slots to the right.
+And again, we cannot guarantee
+the 27 or all the blocks thereafter are free.
+So what does that leave us with?
+What option do we have?
+Well, we can copy the entire Array
+say to the operating system,
+hey, we have this Array that we just copied.
+We need you to find another place in memory where
+there are enough memory slots for
+this Array plus a fourth element or plus,
+you know, an N plus one-nth element.
+And now if you do that,
+we will have enough memory slots to fit this new element.
+So what I'm getting at is that
+when you are trying to insert an element in an Array,
+whether it be at the very beginning,
+in the middle or at the very end,
+you actually under the hood have to copy
+the entire Array that you had.
+And what did we say copying was?
+Copying is an O of N operation
+cause you have to traverse through all of them.
+And by the way, if you don't wanna think of copying,
+even though you should be thinking of copying,
+cause that's really what's happening.
+If you think of just like shifting,
+imagine we have to shift things to the right,
+which is sort of conceptually what we're doing,
+shifting an elements is gonna be equivalent
+to traversing through an elements, right?
+So no matter how you conceptualize it,
+even though copying is the correct way or
+the really accurate way,
+you have to perform an operations to make room for that
+and plus one-nth element that you're trying to insert,
+whether it be at the beginning,
+at the end or in the middle.
+I guess at the end this is where you really realize that
+you have to copy, cause at the end you could say,
+no I don't have to shift anything but you just have
+to copy everything cause you don't know that
+this final index here is freed up.
+So what happens under the hood, like we said,
+the operating system is gonna say okay fine,
+I'll add a number
+or I'll add a value but I'm gonna go find
+another place in memory where there are enough memory slots,
+they're free and back to back
+and I will copy all of your values over there
+and I will add this new value where it needs to be added.
+And then your operating system would likely say,
+okay, I can also free up all this space,
+like all of this here,
+I can free it up.
+But the point is we have a problem.
+We just had to insert an operation
+and that just took O of N time.
+It actually took O of one space
+because if you think about it,
+since our operating system will be freeing up all of
+the space, it's not quite like the copy.
+Earlier when we said copy,
+we assumed that we are making a duplicate version
+of our Array but we are keeping the older Array.
+That's why we said O of N space.
+Here when we're inserting in theory behind the scenes,
+the operating system is gonna copy our Array
+but it's gonna wipe out this old one.
+So it's gonna be like creating O of N space
+but freeing up end memory slots.
+So you didn't from that point of view can think of it as
+okay, we're taking the same amount
+of space every time regardless of how big our Array is,
+but we are copying it so that's gonna be O of N time.
+Now clearly you can imagine that that's not good.
+Like we use Arrays all the time.
+We append stuff to Arrays all the time.
+Maybe we don't necessarily insert stuff in
+the middle of Arrays,
+but we at least append values at
+the end of Arrays all the time.
+Is this really always gonna be an O of N operation?
+No, and the other hint that
+should have given this away is that
+I wrote this in purple cause there's sort
+of an exception here, which is that recall that
+we called this Array a Static Array,
+meaning we specify the length and it is always Static,
+it is always that length that is fixed.
+There is another type of Array
+which is called a Dynamic Array.
+We said it earlier,
+so I'll rewrite it here vertically I suppose
+cause I don't really have much space, Dynamic Array.
+So what is a Dynamic Array?
+A Dynamic Array as the name implies,
+is an Array that can change in size
+more specifically how it works under the hood.
+And by the way here, let me take a quick step back
+and say that in C plus plus and Java,
+Dynamic Arrays are respectively vectors
+and Array lists and in Python and JavaScript
+and a few other modern languages,
+Standard Arrays under the hood are Dynamic Arrays.
+So in JavaScript,
+when you literally open your two empty brackets
+or in Python when you open two empty brackets,
+so list you are dealing with Dynamic Arrays under the hood.
+So JavaScript and Python really sort of
+abstract this complication away from you.
+But okay, I deviate now, what is a Dynamic Ray?
+Well, a Dynamic Array is an Array that under
+the hood will allow you to have faster insertions
+at the end of the Array.
+So what would happen is,
+and perhaps here I'm gonna move away from
+the memory canvas and actually just show you
+in an actual Array like how would
+an Array looks like conceptually play
+make some space here I'm gonna erase this a little bit.
+Let's say that we have an Array of length, three again,
+so we have one, two, three,
+I'll write it and white,
+we have one, two, three, a Static Array,
+you could think of it conceptually as having
+the bracket here, right?
+This is the static Array.
+And in memory you had these 24 blocks,
+which we still have up here.
+A Dynamic Array, what would happen
+is your operating system would actually allocate
+twice as much memory as what you're asking for.
+And here, just quick step back,
+I am speaking sort of broadly, it's possible that
+depending on your language
+or depending on your operating system,
+you know, you would allocate a little bit more
+or a little bit less memory than I just said,
+perhaps it's not doubles the length that you specified,
+perhaps it's like the, the smallest power of two that
+is greater than the length that you specified.
+So do keep that in mind.
+I'm not speaking extremely precisely,
+but generally speaking,
+it will be allocating double
+the amount of space that you asked for.
+So what that wouldn't look like conceptually is
+instead of having this bracket next to the three right here,
+it would be more like here
+and here you have three empty memory slots
+or 24 if we're dealing with 64 bit integers that
+then operating system has said,
+hey, you can use those memory slots
+like I'm allocating them to you.
+They're empty right now, but I've allocated them
+to you so you can freely append this stuff to
+the end of this Array and we'll be able
+to add them here because you know that
+these memory slots are empty.
+So what that means is that if you want append,
+let say the number four, you can just do that.
+You appended number four and
+the operating system is directly gonna go to,
+you know it's gonna get the index or
+the memory address at index four and again,
+remember that's constant time.
+That's super easy.
+You look at the starting memory address
+and you calculate where the fourth memory address would be,
+or fourth starting one would be,
+which would be 27 and then it just fills up
+the eight memory slots that you need for four.
+Then you wanna append five, great.
+You wanna append Six, great.
+Now obviously here you might be thinking,
+okay, now we just appended six,
+like now what do we do if we wanna append seven?
+Like now we're back to the same problem of a Static Array
+and this is where the term dynamic comes into play.
+Basically a Dynamic Array.
+It will allocate double the space that you need,
+so that up until you reach that space,
+you have very fast insertions at the end of your Array
+and once you exhaust the amount of space that
+you had been allocated, only then does
+the Array copy itself or does the insertion rather
+cause a copy and the copy will give you another double
+the amount of space that you need.
+Okay, so let's take a simpler example.
+We're gonna re erase this.
+You start with an Array of length one
+and the operating system will tell you, okay,
+instead of allocating you eight memory slots
+or you know one element in memory,
+I'm gonna allocate you two elements in memory.
+So you had one and it allocates you two memory slots.
+Then you append the number two
+so you put the number two that's fine,
+that's constant time.
+Constant time insertion at the end of the Array.
+And then you wanna append the number three.
+So now the operating system says okay,
+there's not enough space.
+I'm gonna move this bracket
+and I'm gonna give you four spots, double that.
+So now you have two spots and you can store three
+and four and three, three took O of N time,
+to add because you had to copy one, two
+and then you had to append three,
+but four was constant time,
+so so far we had like we had
+you know O of one O of N O of one.
+Now you wanna add another number,
+you wanna add the number five,
+so now the operating system is gonna say,
+okay, I'm gonna move this bracket all
+the way here and now that took O of N time.
+So to add the number five was O of let me write in brown,
+was O of N but then the numbers six, seven and eight
+those were all O of one O of one O of one O of one.
+So you can start to see that
+here now if we were to add another number,
+like the number nine, it would double this again,
+this would be a thing of size 16
+and suddenly you would have like 15
+or more of one operations
+and one O of N operation when you had copied
+this entire Array to make room for 16 slots.
+So at this point you might be wondering,
+okay, sO of N what is the like true time,
+complexity, ramification of this insertion.
+We know that the space complexity is still of one
+cause even when we do the copying,
+like we said for insertion,
+you are copying, but you are also wiping out
+the previous memory, so of one space,
+but what's the time complexity?
+Well, let's think about it.
+There are two ways to think about it.
+Like the spoil of alert, it's gonna be of one.
+So for Dynamic Arrays, which are,
+so far for Dynamic Arrays is gonna be,
+of all written in green, it's gonna be O of one time.
+But why is this the case?
+There are two ways to think about it conceptually.
+The first way is mathematically actually not conceptually.
+You can think that every time we're doubling
+the amount of memory that we have, okay.
+So how many times do we double the memory?
+Well, we double the memory, Let's say for instance,
+when the Arrays of length one,
+then we double it when it's at the Array of length two,
+then we double it when it's at the Array of length four,
+then we double it at Array of length eight.
+Right, that was the example that I showed
+and then we keep doubling it until we reached N,
+at the N-nth time that we've doubled an Array,
+we have doubled it at one at two,
+at four, at eight, at 16, at 32 you know, at that end.
+So all of these operations, how long do they take?
+Well they take, you can literally just
+add O in front of them, right?
+The first one where we had an Array of
+length one took O of one, the second one took O
+of two plus O of four.
+And here by the way, I'm speaking kind of
+loosely in sort of pseudo code.
+This is like pseudo math.
+It turns out that it's correct.
+But you know, bear with me,
+cause I know that I said that, you know,
+if you're writing O four you should break that down to one,
+point is like when you are copying an Array of length four,
+you're doing four operations, right?
+And so you eventually get to O of N.
+And so another way of writing this expression right
+is here you keep doubling,
+one plus two times one plus two
+times two plus two times four.
+Another way of saying it is,
+so I'm actually gonna re-erase this,
+is you are doing, you know N operations
+the last time when you copy the Array to last time.
+Then you're doing N divided by two operations,
+the second time or the previous time that
+you copied the Array and divided by fourth operations,
+the time even before that,
+and divided by eight all the way to one.
+Right.
+And what is this series here?
+This series converges to two N
+you can do the math if you don't trust me
+or you can look it up on Wikipedia,
+but this series when you say N plus N divided by two
+plus N divided by four plus N divided by eight
+converges to two N.
+So here I'll erase this and we can say that
+in total for insertions,
+we're doing O of two N time complexity cause we're doing,
+O of we're doing two N operations to copy,
+every single other insertion is O of one
+and O of two N is equal to O of N cause we dropped the two.
+So that was sort of the mathematical way to prove that
+insertion in a Dynamic Array ends up being of N.
+But what if we're talking about a conceptually speaking.
+Conceptually speaking, you can really just think
+of it as whenever you have to copy
+the Array since you're doubling
+the space or since you're doubling the space that
+you're allocated,
+you're giving yourself sort of
+like two times as many constant space operations
+or constant time operations,
+constant time insertions in the future.
+And you can think of all these constant time operations
+as sort of canceling out those copies that
+you're gonna have to keep doing, right?
+So you've so many constant time insertions that
+those few linear time insertions kind of get canceled out.
+And by the way, this is known as
+what's called amortized analysis.
+So amortized analysis is sort of
+the version of complexity analysis
+where you are really taking into account sort of
+the edge cases where things take a lot of time,
+as well as the easy cases
+when they don't take a lot of time.
+And so from an amortized analysis point of view,
+we say that inserting an element at the end of an Array,
+a Dynamic Array takes O of one time constant time.
+Now, of course you might say,
+well, should we specify the worst case?
+Cause we talked about that in
+the complexity analysis or the big O notation video.
+So we specify the worst case that in
+the worst case we are appending in in O of N time you could,
+I'll admit here, this is probably
+the only time where you can sort of break that
+rule in the industry, typically,
+you know when you're in a coding interviews,
+like here we're gonna say in
+the context of coding interviews,
+you just end up saying you accept
+the fact that inserting an element at end of an Array,
+a Dynamic Array is gonna be constant time.
+You don't really specify that worst case.
+There might be some specific problems.
+So it's possible that you may be in one specific
+coding interview where your interviewer
+tells you specifically,
+it is absolutely important that we optimize for all cases,
+including the worst case.
+That might be a hint that
+they're really trying to test you on your knowledge
+of insertion times for Dynamic Arrays.
+But unless that's the case,
+you can assume that it's constant time.
+So now the last couple of points that I wanna make
+before we end this video.
+is that if you want to insert an element in a Dynamic Array
+in the middle of the Array
+or at the beginning of the Array,
+unfortunately their Dynamic Arrays won't really help you.
+And so in those cases it will still take O of N time
+because you're gonna have to shift all the elements.
+You might actually not have to do the copy
+cause you might have enough space in
+the dynamic Array already allocated,
+but you're gonna have to shift every element by one.
+And therefore you will have to, you know,
+use an O of N operation to insert an element.
+So when you see in a language, for instance,
+a Builtin method, like in Java script
+where you can unshift an element,
+which means appending the element to
+the beginning of the Array,
+that's actually an O of N operation,
+a linear time operation.
+Now I'll say one caveat about that in a second,
+but first, let's also cover popping values out of an Array.
+So this is probably the last operation that
+we'll talk about, popping values at an out of an Array.
+Typically we talk about popping when we say removing
+the value at the end of an Array, so popping,
+I'll just take out these parentheses,
+popping is O of one space time
+because all you do is remove
+the last element in Array so you free up
+the last memory slot or you at least remove
+the values in it.
+But similarly, if you wanna pop a value out of
+the middle of the Array or at the very beginning of
+the Array, for instance,
+in JavaScript you have this Builtin method called shift that
+allows you to remove the first method in Array or in Python,
+you can pop in the middle or at the beginning.
+Those are actually O of N operations under
+the hood because you are shifting all of the elements.
+Now one thing here, this is the caveat that I mentioned,
+you may actually see in some questions on Dev Elite that
+we do use pop at index zero,
+so we pop values at the beginning of an Array
+and we assume that those
+are actually constant time operations.
+If you pay close attention
+to some of our video explanations, you'll notice that.
+The reason that's the case is because in some problems,
+in a very select few problems,
+we actually have to pop values at the beginning of an Array.
+And that's the only thing that we need to do.
+We don't need most of the other properties in an Array.
+And so what we're actually doing in those cases,
+and here I'm jumping the gun a little bit,
+is we are treating those Arrays as cues
+which are built on top of linked lists.
+These are data structures that
+we're gonna be covering in some of
+the upcoming videos of the data structures content.
+But so in those cases we're making basically assumptions,
+in truth, it's actually incorrect for us
+to use pop at index zero, but we can basically explain
+to our interviewer,
+hey, I don't wanna go through the trouble of having
+to build a link list or build a queue
+or import a library with a queue.
+So I'm just gonna treat this Array
+as if it were a queue cause it basically works.
+It's sort of the easiest way to to write this code
+and in a lot of those cases that's gonna be fine
+because those particular algorithms
+are assessing something else,
+not really whether or not you know that
+popping an element at
+the first index in an Array is an O of N operation.
+But it is something that's important to mention
+because you might, if you pay close attention, notice that.
+And you might be wondering, hey, wait a second.
+Isn't that an O of N operation?
+Yes it is, we're just kind of
+cutting corners in those cases.
+As a really final point before we end this video,
+I do wanna say that whenever you are performing
+an operation on the Array that is gonna affect
+let's say half of the Array or a quarter of the Array,
+those are still, O of N operations.
+As an example.
+You might've wondered, well if we insert an element in
+the middle of a dynamic Array,
+we only have to shift half of the values to the right.
+If we insert the value at, you know,
+three fourths of the Array,
+we only have to shift one fourth of the Array.
+But all of these things still
+end up being O of N operations.
+Why?
+Because if you write it, you know,
+in very much detail you'll have O of you know,
+0.25 N and that's still a constant
+and so it's still, O of N.
+So that's just something to keep in mind.
+Even if you're only doing something on half of
+the Array or on a fraction of the Array.
+If the Array is of length one trillion or one quintillion,
+that's still a lot, and in terms of complexity analysis,
+we still treat it as, O of N.
+That's the last thing that I want to say cause that
+definitely comes up in a lot of coding interview questions.
+With that, I realized that
+this was a very long video on Arrays.
+I do hope that you found this video very informative.
+Really at this point you should
+understand fundamentally why Arrays work the way they do.
+Why is it that you can magically
+access an element at an index in an Array so fast.
+Why can you magically insert elements at
+the end of an Array so fast?
+And so this video should of really answered those questions.
+Arrays are one of the best data structures,
+even though they're very elementary and simple.
+At the end of the day, they're awesome.
+They work great.
+Be sure to use them properly.
+And I'll see you in the next video.
+Hey everybody welcome to Dev Elite,
+in this video we're gonna be covering strings.
+We generally think of a string as a data type,
+one of the fundamental data types along with integers
+for instance or Booleans.
+That being said, strings do behave sort of
+like data structures in the sense
+that we can manipulate them, manipulating them definitely
+has space time complexity implications
+and so for those reasons we're gonna be covering strings
+as part of the data structures here on Dev Elite.
+Strings are particularly tricky
+because they're implemented quite differently
+depending on the programming language that you're using.
+And we're gonna be looking into
+that a little bit more thoroughly later on in this video.
+So to start, we can remind ourselves
+of what we said in the memory video.
+Where we briefly covered how strings are stored in memory.
+A string is typically stored in memory
+as an array of integers where each character
+like the letter "T", or the letter "I", the letter "A",
+has been mapped to an integer.
+The way this is done is through some sort of character
+and coding standards.
+So one of the popular ones is ASCII.
+ASCII in coding standard.
+And so in ASCII for instance,
+the letter "A" capital "A" maps to 65.
+For instance, capital "B" maps to 66.
+Lowercase "a" maps to 97.
+And so you can get integers
+for every single letter in a string.
+And then you score those integers
+as an array of integers in memory.
+What's nice about the ASCII character in coding standard
+is that it has fewer than 256 characters,
+and it certainly includes all the characters
+in the English alphabet for instance.
+So all the characters in this string here
+can be encoded with ASCII.
+Which means that if we're dealing
+with ASCII encoded characters,
+they're gonna be stored in memory as one byte of 8 bits.
+If we're dealing with characters
+that are not encoded in ASCII
+so for instance, characters of the Chinese alphabet,
+we typically use other character encoding standards
+and those are gonna require more space, more bytes.
+So for other types of characters we might store them
+using two bytes or perhaps even more bytes.
+However, the main point to make here
+is that every character in a string is gonna be stored
+in memory using a fixed amount of bytes,
+sort of like an integer, like a fixed-width integer.
+And that means that when we're dealing
+with a single character in a string,
+all of the operations that we're gonna perform on
+a single character in a string are gonna
+be constant time operations.
+Just like they would be if we
+were dealing with one fixed-width integer.
+So let's erase what we've written here
+and let's cover some of the standard
+or common operations that we perform on a string.
+If we are traversing through a string
+it's gonna be very similar to traversing
+through an array.
+We're gonna be dealing with an O of N operation,
+so I'll write it down here.
+Traverse is gonna be an O of N operation in time complexity,
+and it's gonna be an O of 1 space complexity operation,
+assuming that we're not doing anything during the traversal,
+we're not scoring anything else.
+Things like copying a string are gonna
+be O of N space time because we're gonna
+be storing another N characters in space
+and that's gonna take O of N time
+to copy the N characters.
+If we want to get the character
+at a given index in a string,
+so get, this is gonna be a constant time operation,
+constant space time operation as well
+'cause we're not storing anything else.
+Why is it constant time?
+'Cause like I said, under the hood a string is stored
+as an array of characters or an array of integers
+and looking up a value in an array at a given index
+is a constant time operation.
+Now where things get interesting is
+when we try to actually mutate the string.
+So for instance, if we try to insert a value in a string
+or at the end of a string.
+And this is what I hinted at
+at the beginning of the video.
+In some languages, like C plus plus for example,
+strings are mutable.
+Meaning that you can alter them,
+you can add characters to them.
+In a lot of other languages, like Python, Java,
+JavaScript, C sharp, Go Lang, for instance,
+a lot of the languages that we support here on Dev Elite,
+strings are actually immutable.
+Meaning that you cannot alter them
+after you've created them.
+If you're trying to alter a string
+in one of those languages,
+you actually have to create a brand new string.
+You have to copy the string, create a new string
+that is gonna have that new character
+that you've tried to append to it,
+or the thing that you've tried to alter about the string.
+So this is really important
+because if you've done a bit of coding,
+you may have written something along these lines.
+Let's say that this string here
+were in a variable named foobar.
+And we were to do something like foobar
+plus equal some letter.
+Let's say the letter "x".
+This is something that you've likely
+found yourself writing in your code.
+And if you're dealing with a language like JavaScript,
+Python, or Java, the languages that I mentioned
+where strings are immutable,
+what this does under the hood
+is it creates a brand new string,
+it copies this entire string, or in this case foobar.
+And it adds this letter to that new string.
+Or rather, it creates a brand new string,
+a brand new array of characters
+where that new letter or new character
+is at the end of that array.
+But the point is this is not a constant time operation
+which you might expect.
+Because you might be thinking,
+"Oh, I'm just appending a value"
+when we're dealing with a dynamic array for instance,
+appending a value is an amortized constant time operation.
+But no, because strings are immutable,
+by doing this here, you're performing
+an O of N operation, a linear time operation.
+This is incredibly important because similarly,
+it means that if you're adding two strings together,
+for instance if you're doing, you know,
+abc
+plus
+def,
+adding these two strings together,
+concatenating these two strings together,
+is creating a brand new string of length
+n where n is the length of the first string,
+and of length m, where m is the length of the second string.
+So this is an n plus m operation.
+This is really, really, super important.
+Of course this is only relevant
+when you're using languages where strings are immutable.
+But if you are using one of those languages,
+and a lot of them are like that,
+then this is really important to know.
+And this is why for those languages,
+it's often recommended if you have
+to do a lot of alterations to do a single string,
+it's recommended to split out the string
+into an actual array of characters in code,
+we're no longer talking about memory here,
+but in code, to split the string out
+into an array of characters.
+And a lot of languages have built-in methods
+that allow you to split a string.
+So that then you would be left with something like,
+imagine you had an array with t, h, i, s,
+so on and so forth.
+Here you can append values in constant time
+so if you want to mutate this string,
+you can mutate this array of characters
+by appending characters to the array
+in amortized constant time.
+And then finally, you rejoin all of the letters,
+you re concatenate them,
+and you've now obtained your mutated string.
+And so that way, instead of having done a bunch
+of O of N operations, you've done one O of N operation
+when you split the string out into characters.
+Then you did a bunch of constant time operations
+when you were appending characters to the array.
+And then finally, you re concatenated
+all the characters in a single O of N operation.
+But so this is very important.
+I'll repeat it one last time.
+When you're dealing with immutable strings,
+any method that would mutate the string
+is actually making a copy of that string,
+'cause it's gonna be an O of N operation
+with the new character at the end,
+or with whatever mutation you had in it.
+And by the way, when you're dealing with immutable strings,
+there is no set at index method.
+You can't set a character at a given index
+when you're dealing with an immutable string.
+You literally cannot alter that string.
+The closest thing that you can do to altering a string
+that's immutable is this plus equal thing,
+which under the hood is just saying
+foobar equals foobar plus x,
+and that again, as I've said many times now
+is an O of N operation.
+And then of course there are a lot of other things
+that you can do with strings.
+For instance, you can find sub strings within a string,
+and there are very fast but complex algorithms to do that.
+For instance, one of them we actually cover on Dev Elite,
+it's called the Knuth-Morris-Pratt algorithm,
+it's a very fast algorithm that allows you to find
+one sub string inside another string,
+at least find if it's present in another string.
+And of course there are a bunch of other operations
+that kind of build on top of things like
+finding a sub string.
+One of them is replacing a sub string
+with another value in a string
+and these are operations that are often built-in
+to the language that you're working with.
+But overall, in the context of coding interviews,
+the main things that you need to know about strings
+are really the fundamental things
+that you'll do with them,
+things like traversing strings, copying strings,
+or getting values in a string at a given index,
+with this get method.
+Which is typically written the same way
+that you would access a value in an array
+at a given index.
+And then of course as I've mentioned
+many times now in this video,
+it's very important to know about the immutability
+of strings if you're dealing in a language
+where strings are immutable.
+With that, I hope that you found this video informative,
+and I'll see you in the next one.
+Hey everybody, welcome to Dev Elite.
+In this video, we're gonna be covering stacks and queues.
+Stacks and queues are interesting data structures
+that are pretty commonly used in coding interviews.
+They're very easy to grasp
+because they have intuitive, real-life examples,
+and they're not too hard to implement.
+So with that, let's dive into stacks and queues.
+What is a stack and what is a queue?
+Perhaps the best way to answer these two questions
+is to look at these real-life examples
+that I just mentioned.
+So starting with a stack,
+you can imagine a stack of books on a table.
+So here on the left side of my screen,
+I've drawn out what are supposed to be
+three books stacked on top of each other on a table.
+So these three rectangles are books.
+And you can imagine that if you were to add a book
+to the stack, you would add it on top.
+You would add a fourth book here on top of the other books.
+Similarly, if you were to remove a book from the stack,
+you would probably remove the book from the top.
+So you would remove this book from the top of the stack.
+You wouldn't really be able to remove books
+from the middle of the stack
+or from the bottom of the stack
+because then all of the other books would kind of fall over.
+And so what I just depicted here
+is really the key principle of stacks.
+A stack is a data structure
+that supports inserting and removing elements
+following the last in, first out principle.
+Which is why you may sometimes hear people describe stacks
+as LIE-foe or LIFO data structures.
+L-I-F-O, which stands for last in, first out.
+Why? Because the last element that you put in your stack
+is the first element
+that you're gonna take out of your stack.
+Last in, first out.
+So now let's put stacks on a pause for a second,
+and let's look at queues.
+So queues are kind of the opposite of stacks.
+You can imagine the real life example of a queue
+as a queue or a line of people waiting to buy tickets
+at the movie theater, for instance.
+And so here, if you want to add an element to the queue,
+you can imagine that someone new
+would wanna get in line to buy tickets.
+Where would they go?
+Unless they wanna cut the line,
+they would go to the back of the line.
+And the first person who would get out of the line
+would be the person who first got into the line.
+The first person here.
+They would buy their ticket, and then they would be gone.
+As you can tell,
+this type of structure follows a different principle,
+not the LIE-foe principle or LIFO principle,
+it follows the first in, first out principle,
+which you can write as F-I-F-O.
+The first person to get into the queue,
+in this case, this was this person, right?
+They probably were there at the very beginning,
+is the first person that's gonna get out.
+Then the second person to get in to the queue,
+is gonna be the next person to get out,
+and so on and so forth.
+So as you can see,
+queues are basically the opposite of stacks.
+A very quick recap, a stack is a list of elements
+that are in some sort of order,
+like you added them in some order,
+but they follow this last in, first out principle,
+where if you wanna add an element,
+that element is gonna be the first one to be removed
+unless we add another element.
+And a queue is also a list of elements
+except it follows the first in, first out principle,
+where the first element that gets put into the queue
+is the first one that's always gonna get out.
+So this is really what stacks and queues are intuitively.
+Like I said, they're not that hard to grasp,
+because I think that a stack of books or a line of people
+waiting to buy tickets at a movie theater,
+are two very intuitive real-life examples
+that you've probably encountered in your real life.
+But now let's look at the actual implementation
+of these two data structures.
+Perhaps the best way to introduce
+the implementation of stacks and queues
+would be to look at the space time complexity ramifications
+of the operations that you can perform on stacks and queues.
+So it turns out that the nice thing about stacks and queues
+is they support
+constant time insertion and deletion of elements.
+So for instance, in the stack,
+removing a book from the stack,
+or adding it, can be done in constant time.
+Similarly, for the queue,
+you can insert elements in the queue and remove them.
+So here, if we have this queue of four people,
+let's move it here.
+If we have one new person,
+let's say they weren't in the queue and we wanna add them,
+this is gonna be done in constant time.
+And if we wanna remove an element
+or a person from the queue,
+this would also be done or doable in constant time.
+So both of these data structures
+support constant time and space,
+because you're not really using additional space
+that grows with respect to the size of the input.
+So we'll actually write ST.
+Constant space time for insertion.
+So insert and delete, or remove.
+How is this doable under the hood?
+Well, as you might imagine, for a stack,
+a stack is really just a dynamic array.
+For instance, if I have the array 1, 2, 3, right?
+And let's say this is an actual dynamic array
+under the hood,
+to make this array behave like a stack,
+all that I need to do is append an element to it,
+or remove, pop an element from the end of the array.
+And remember, with dynamic arrays, we said that
+adding an element and popping an element from the end
+are both amortized constant time operations.
+So a stack is literally a dynamic array under the hood.
+Or at least it can be implemented
+using a dynamic array under the hood.
+This would of course mean that searching for an element,
+an arbitrary element, in the stack is gonna take linear time
+because you would have to traverse the entire dynamic array,
+and it also means that you can't add elements to the stack
+that aren't at the top of the stack.
+Which is fine, because the stack is specifically
+a structure that supports the last in, first out principle,
+we don't care about adding elements
+to the bottom of the stack or in the middle of the stack.
+And a dynamic array
+wouldn't allow us to do that in constant time
+Now let's look at the queue.
+Is a queue implementable using a dynamic array?
+Well, if we need to delete elements
+from the end of the queue,
+like imagine these three, or these four people
+are represented by these integers here,
+we can add maybe the number four here, right?
+We'll add the number four.
+To remove the number four,
+which would be removing this last person from the queue
+which was the first person who came into the queue.
+Here, we can just pop the value from the dynamic array
+that's easy, that's constant time.
+But if we wanna add a value to the queue,
+like imagine this person hadn't been in the queue
+and we wanted to add them in constant time,
+we can't do that.
+Because remember, in the dynamic array section,
+we did say specifically that inserting elements
+at the beginning of a dynamic array or in the middle,
+is not a constant time operation.
+We gave that one little caveat, if you paid close attention,
+that in some questions, we kind of wave our hands
+and treat inserting an element at the beginning of an array
+as a constant time operation,
+but truthfully, that's incorrect.
+And what we were doing when we waved our hands
+and said that sometimes we do that,
+is we were treating the dynamic array as a queue
+that supports the first in, first out principle.
+But if we're really being accurate,
+a queue has to be implemented with a different structure.
+And so this is why a queue
+is typically implemented with a linked list.
+This is the most basic implementation of a queue,
+where you have the elements that point to each other,
+like this, and you keep track of both the head
+and the tail of the linked list.
+If you wanna add an element to the queue,
+which by the way, for queue
+would be called typically enqueue.
+This is the insertion method for queue, enqueue,
+you would just replace the head of the linked list.
+So you would add zero for instance,
+and make that the new head of the linked list.
+And we know how to do that in constant time
+from the linked list video.
+And if you wanted to remove an element from the queue,
+and again here for queues,
+this is specifically called dequeue.
+So enqueue and dequeue.
+You would remove the tail of the linked list,
+so you would remove this three.
+And if you have access to the tail of the linked list,
+you can do that in constant time.
+You do need to have a reference to that tail,
+otherwise it would take O of N time to find the tail.
+And here you just make two the new tail.
+So this is a constant time operation,
+you just have to replace a few pointers
+or remove a few pointers, and we now have two
+as the tail of the linked list,
+which would be the next element
+that we would dequeue from the queue.
+And by the way, since we were idiomatic
+with our naming of enqueue and dequeue for the queue,
+for stacks, the names of the operations
+are actually typically push,
+to push an element on top of the stack,
+and pop, to pop an element off the top of the stack.
+Both of these names and both enqueue and dequeue
+are synonymous with insert and delete, or add and remove.
+But these are typically the terms that we use,
+the idiomatic terms.
+So as you can tell, queues are slightly more involved
+from an implementation point of view,
+which is partly why sometimes
+you can kind of forget about the fact that it's implemented
+with a linked list, and just create a normal array
+which is super easy to initialize as a queue.
+That is technically incorrect,
+so it's something that I would really recommend
+that you tell your interviewer
+if you're planning on doing that,
+and explain to them that you would do that
+just in the interest of saving time in the interview
+so as not to have to implement a linked list,
+but it would still be important to tell them
+that you're planning on using a queue
+that supports the first in, first out principle.
+So let's wrap up the video
+by giving ourselves a little bit of space here
+and reminding ourselves
+that insertion and deletion in both stacks and queues
+run in constant space time.
+Then if we are searching for an element,
+this runs in O of
+N time and constant space.
+Unless we're storing some auxiliary information,
+there's no reason that this would take more space.
+Let me erase this and write it a bit more clearly,
+constant space.
+Then if we're actually storing a stack or storing a queue,
+you can imagine that you're storing a dynamic array
+or a linked list under the hood.
+So that's gonna be taking up O of N space.
+Your stack or queue might start at zero elements.
+They might start by being empty,
+and as you add elements to them, you're taking N space,
+where N is the number of elements that you're adding.
+So we'll write O of N space
+to store.
+But again, keep in mind whenever you are inserting elements,
+so for instance, pushing an element
+or enqueueing an element, these two operations individually
+are constant time operations.
+So unless you're initializing a stack of length,
+I don't know, you know, N at once,
+you're not actually taking O of N time
+to initialize the stack.
+Typically, a stack or a queue is gonna be initialized
+as an empty stack or an empty queue.
+And you're gonna one by one, add stuff when you need it.
+And then the last thing that I wanna point out now
+beyond the space time complexity ramifications is that
+stacks and queues are very basic structures,
+as you saw in this video,
+but you can actually make them a lot more complicated,
+and you can make them a lot more powerful.
+For instance, you can transform a stack
+in what's called a MaxStack or a MinStack,
+meaning a stack that also keeps track
+of the largest element in it, or the smallest element in it,
+we actually have a question on that on Dev Elite,
+so I'd encourage you to check it out.
+For queues, you can turn them
+into what's called a priority queue,
+which keeps track of an element with high priority.
+And this has really cool implications
+in coding interview problems.
+Then you can make these structures even more complicated.
+You can kind of add on to them as you please.
+Overall, the main thing that's important to understand
+is just the fundamental principle behind each structure.
+So the LIFO and FIFO principles, and that's that.
+And I suppose the very last thing I'll add,
+is that also both structures
+typically support a peek method.
+So I'll write it maybe in green here in the middle.
+A peek method, which also runs in constant space time.
+It's basically the equivalent of pop and dequeue,
+except you don't actually remove the element.
+You just look at the next element that you would remove.
+So it's kind of you peek at the top element of the stack,
+you peek at the top element,
+or the next element in the queue.
+So that's it for stacks and queues.
+I hope that you've found this video informative.
+I hope that you've found these structures
+kind of intuitive to understand,
+and I'll see you in the next video.
+
+Hey, everybody.
+Welcome to Dev Elite.
+In this video,
+we're going to be covering hash tables.
+Hash tables are an extremely powerful data structure.
+They are also extremely common.
+You'll be using them a lot
+both in practice and in coding interviews.
+In fact it's probably accurate to say that
+over half of the questions on Dev Elite
+require some form of a hash table
+so it's very important to know how hash tables work.
+The good news is that
+using hash tables is actually pretty simple
+with most programming languages.
+A lot of modern programming languages
+have built-in hash tables
+that are directly supported,
+for instance in JavaScript,
+it's just the JavaScript object.
+In Python,
+it's the Python dictionary.
+The slightly bad news is that
+hash tables are actually pretty complicated under the hood
+or rather to make them very good and very performance,
+there is a lot of complicated stuff.
+Fortunately though,
+in the context of coding interviews,
+we're mainly dealing with the simple stuff
+relating to hash tables and so with that,
+let's actually jump into hash tables.
+So what is a hash table?
+Well, to put it simply,
+a hash table is a key-value store.
+It's a data structure where you are able to store
+pairs of keys and values
+where every key maps to a value.
+So for instance,
+here in front of me I got a hash table
+where we've got three keys,
+the strings foo, bar and baz
+and all three of them mapped respectively
+to the values one, two and three.
+And to be clear,
+in case these arrows aren't giving it away,
+the idea behind a hash table is that
+you can access a value given a key.
+So for instance,
+I can very easily access the number one
+or the number two,
+given the key foo or given the key bar.
+But I wouldn't able to do the opposite.
+I wouldn't be able to find the key foo given one
+or to find the key bar given two.
+And the beauty behind the hash table is that
+insertion of a new key-value pair,
+deletion of a key-value pair
+or searching for a value given a key
+are all operations that run in constant time on average.
+So all these operations that I just mentioned,
+inserting a key-value pair,
+deleting a key-value pair
+or searching for a value given a key
+are constant time operations.
+I will write it in big right here
+because this is important.
+Constant time operations,
+we'll put it here to the side for insertion,
+write insert,
+delete and search.
+Now at this point
+you might be thinking,
+well, this weirdly sounds like an array
+in the sense that in an array,
+we have key-value pairs
+except the keys are indices.
+The keys are always numbers or positions, right?
+Typically we talk about arrays
+with indices zero, one, two, three, four
+and you can access values in an array
+in constant time given the indices.
+We explained why accessing a value at a given index
+is a constant time operation
+in the arrays video of the data structures content
+from Dev Elite.
+That's one of the main things about arrays, right?
+The constant time lookup.
+We have that constant time lookup here with hash tables
+or at least that's what we've said so far.
+However, the nice thing about hash tables is that
+our keys don't actually have to be integers.
+They don't have to be indices like in an array.
+Our keys can be strings,
+for instance like here,
+we've got this string foo, bar, baz
+and it turns out that our keys can even be other datatypes
+so we'll get into that in a second.
+And so how is that possible?
+How is it possible,
+at least as far as searching is concerned
+or accessing a value given a key,
+how is it possible to have a constant time lookup
+with a key that isn't a number or an integer
+like in an array?
+And of course this is when we're going to look at
+how hash tables are implemented under the hood.
+It turns out that hash tables
+are built on top of arrays.
+So you can imagine that under the hood,
+I'm going to move our hash table,
+this is our conceptual hash table here,
+I'll move it to the left a little bit.
+Under the hood,
+we've got an array,
+so I'll draw this array out here
+and for now we'll have the array have three indices,
+maybe I'll make it actually a lot smaller
+so that we have enough space for later on.
+Just three indices.
+And we're actually gonna be storing our keys
+or rather the values that are relevant to the keys,
+so we're gonna be storing one, two and three
+that are relevant to foo, bar and baz
+in this underlying array
+and that's what's gonna allow us to have
+this constant time lookup given an index.
+But again here you're wondering,
+"Okay, but what do you mean given an index
+'coz here we are dealing with strings as keys,
+not indices."
+So the way that works is that behind the scenes
+when you're inserting a key-value pair inside a hash table
+and this is where the word hash comes into play,
+you use what's called a hash function
+to transform the key,
+in this case,
+a string,
+say the string foo or the string bar
+into an index.
+So I'll repeat that
+you use what's called a hash function
+to transform your key,
+like the string foo into an index
+which will fit in this underlying array.
+And similarly when you'll be searching
+for a value given a key,
+you'll once again use this hashing function
+to transform the key into the respective index
+that it's supposed to be mapping to.
+You'll find that index and you'll be able to say,
+"Oh, let me grab the value at that index
+in the underlying array"
+and that will be a constant time lookup.
+So of course at this point you're wondering
+what is a hashing function?
+How do I transform my string into an index?
+Well there are a few things
+that you need to do.
+First of all,
+you need to actually transform the string
+into an integer
+and here there are many ways to do that.
+One of the easiest ways is to
+map every character in the string
+to its ASCII character encoding,
+you're going to be left with
+one integer per character in the string
+then you sum up all those integers
+and you get a number.
+So let's try that with the string foo.
+Now I don't have the ASCII character table
+off the top of my head here for these three characters
+but it doesn't really matter.
+We're just going to assume
+that if we're to map these three characters
+to their respective ASCII encoded values
+and then sum them up.
+Let's assume that we would get the number 301.
+Let's just assume that if we were to map every character
+in the string foo to its respective ASCII encoded value
+and then sum up all these integers that we've just gotten,
+we would have get the number 301.
+Now here of course you're probably thinking,
+"well okay, 301 is a number,
+it's an integer,
+but here we're dealing with an array of three indices,
+not an array of 301 indices.
+So how does that work out?"
+Well this is where the modulo operator comes into play.
+In a lot of languages,
+the modulo operator looks like this,
+the percentage sign.
+And so you would do 301 modulo
+the length of your underlying array.
+And if you do 301 moduloed length of your underlying array,
+you know that you will always get a number
+between zero and length of the underlying array minus one.
+Just as a quick reminder of what the modulo operator is,
+if you do for instance,
+let's say 301 modulo three
+which would be what you would do here with this array,
+basically what the modulo operator does is
+it says divide 301 by three
+and return the remainder.
+So 301 divided by three is what?
+It's a 100 times three plus one, right?
+So the remainder is one.
+So 301 mod three would be equal to one.
+And so this means that our string foo
+which got transformed into 301
+ultimately mapped to the index one
+and so now finally we can say,
+"Okay, we're going to store the number one
+at index one,
+which would be in the middle here."
+And so we would store one right here.
+Now we can do the exact same thing with bar
+and with baz.
+So let's assume for the sake of example
+that bar got transformed into the number 602
+and so if you do 602 mod three,
+that would be 200 times three plus two,
+so this would then mapped to two
+and so we would store bar the value two
+at index two
+which would be here at the end of the array.
+so we would put two here.
+And then finally,
+let's assume that baz mapped to,
+I don't know, 90.
+So 90 mod three is 30 times three plus zero
+so this would map to zero
+and we would put three for baz here.
+So so far so good,
+we've inserted our three key-value pairs
+into our array under the hood
+by using this hash function
+to find the relevant indices for each key
+and now if we want to look up a value for a given key,
+we can just say,
+okay, let's take bar for instance.
+Let's run bar through the same hashing function,
+the hashing function has to be the same every time,
+we're going to get two again
+and we can access it at index two
+and it's value two.
+So of course,
+here first thing you'd probably wondering is
+what would have happened if foo had not mapped to one
+with our hashing function.
+What if it had mapped to two?
+It's very possible that two strings
+might map to the same index given a hashing function.
+For instance,
+with our hashing function that we said was very simple
+where we just map every character
+to its ASCII character encoded value
+and then sum up those integers,
+imagine the word foo had instead been,
+I'll erase it here,
+imagine that it had been A-B-R,
+so just the same letters in bar
+but ordered differently.
+And this would definitely has been 602.
+Let me erase it to make it clear
+but this would have definitely been 602
+'coz these are the exact same letters
+and so this would have mapped to two.
+And so now what would we have done?
+Well this is where it turns out
+that under the hood,
+a hash table isn't just an array.
+It's actually an array
+where each index maps to a linked list of potential values.
+And this is precisely take care of instances
+where we have two keys
+that get hashed into the same index
+and they therefore collide.
+And this is known as a collision in a hash table.
+So basically we should actually rearrange our array
+and make it look more like an array
+that points to three linked lists.
+So here we would have three linked lists
+and so we would have baz which pointed to three
+which is still stored at index zero,
+so here we can still put three.
+But then,
+and let me erase this for more space,
+the other two,
+bar and I supposed now, abr,
+though this could have still been foo.
+It's possible that foo would have mapped to
+the same number here,
+but abr list is very obvious.
+Both of these map to two
+and so we're now going to make them a linked list.
+So we're going to have one
+and then this points to the next value in the linked list
+which is going to be two.
+Okay, so this complicates a few things.
+First thing that you might be wondering now is,
+okay, well what if we look up now,
+we want to look up the value for the key bar, right?
+So we're going to put bar through our hashing function,
+we're going to get 602, index two.
+We're going to go here
+and then we have a linked list.
+How do we know which of these two values in the linked list
+or imagine there were may be even more,
+how do we know which one is related to bar
+and which one is related to abr?
+And this is where we need to store even more information.
+We actually need every node in the linked list
+to point back to the original key.
+So for instance here,
+the one would point back to abr,
+the two would point back to bar, right?
+And the three here would point back to baz.
+And this is very important
+'coz otherwise we would not be able to know
+which of these two values here
+was related to bar
+and which of them was related to abr.
+
+
+So the next thing that you might be thinking is
+but if we can have values or keys, rather
+that collide with one another
+and that are stored in one linked list in this array,
+then in theory in the worst case,
+we could have every single key that collides
+so we have this one huge linked list
+like may be this three here that maps to baz
+is actually down here
+and it's at the end of the linkded list
+and so we literally just have one linked list.
+Like the other two linked lists have nothing
+and we have one linked list of length n
+where n is the number of keys in the hash table.
+So doesn't that mean that both insertion
+and searching and deleting
+are all O of n operations
+in this case?
+And the answer is yes.
+Hash tables,
+when I sort of specified at the beginning is that
+they support constant time insertion,
+deletion and search on average
+but in the worst case,
+you can end up with a scenario like this
+where you have one giant linked list
+or even it doesn't have to be one giant linked list.
+May be you don't have all the keys
+that collide with one another
+but may be you've got,
+let's say 10 values
+and you've got eight of them that collided with one another
+and two of them that are separate.
+And so that linked list of length eight
+would basically be a linked list of length n.
+So the point is that admittedly,
+in the worst case,
+these three operations,
+inserting, deleting and searching
+where you're looking up a key given a value,
+will take O of n time.
+So actually write it,
+I'll put the time complexity here is O of one on average
+but it's O of n in the worst case.
+Now this is where we have to make an important point,
+especially for the context of coding interviews.
+But it turns out
+that some very smart people out there
+have come out with a lot of very smart
+and powerful hashing functions
+that can be used to minimize the number of collisions.
+In other words,
+the popular hash table implementations
+that exist out there in the real world
+used very fancy and very powerful hashing functions
+that minimize the number of collisions
+such that we can truthfully accept
+constant time insertions,
+deletions and searching on average.
+In fact,
+those hashing functions that
+minimize the number of collisions
+are so powerful
+that in the industry and in coding interviews,
+you typically forgets about the O of n worst case scenario.
+I would say that the only case
+where you really want to care about this
+and it's important to know that this is a thing,
+the O of n worst case scenario
+is if you're in an interview question for instance
+where your interviewer specifically mentions
+that you are trying to solve a problem
+where you need at all times,
+and they specifically mentioned that
+you have to handle known potential edge cases
+and they say that you need
+constant time look up for instance.
+May be in such a case
+they would really be kind of to test you
+on your knowledge of hash tables
+and the fact that they have O of n worst case scenarios.
+But if that's not the case,
+typically in coding interviews,
+you just accept that a hash table supports
+constant time insertions, deletions
+and searching on average
+but you almost just treat it as all the time.
+So basically what this means
+is that here in our example,
+our hash table would actually in practice
+almost always look like this
+where the three values are separated
+in their own linked list.
+And I should also add here that
+in the context of coding interviews
+you typically get so much power
+to these hashing functions
+that you treat the act of hashing keys
+a constant time operation.
+Because if you take a look at the hashing function,
+a very simple hashing function that we were using,
+the one where you map every character in the string
+of the key to its ASCII encoded value,
+that would actually be an O of m operation
+where m is the length of the key.
+But again in the context of coding interviews,
+you typically just accept that hashing functions
+have their really fancy
+and use a lot of magic stuff
+and that hashing keys are just constant time operations.
+Okay so now one of the last things that we have to cover
+and that you might be wondering is
+what happens when we run out of space
+in our underlying array?
+'coz here we have three keys
+so they all fit in our array of length three
+and we assume that we had a perfect hashing function
+with no collisions
+but now what would happen
+if we had 300 keys?
+That means that we would probably have 100 keys
+being mapped to index zero,
+a 100 keys being mapped to index one
+and a 100 keys being mapped to index two,
+so you would probably have three linked lists
+of length a 100.
+So you would have these very long linked lists
+that mapped to the final values
+or you know, the final key-value pairs
+that you've stored in your hash table
+but now we run into that same problem of,
+okay, you might have a great hashing function,
+but you don't have enough space
+in your underlying array
+so you're going to get these giant linked lists
+which is going to lead to O of n insertion,
+deletion and searching.
+And so this is where we have to introduce
+the concept of resizing.
+Basically in order to handle the case where
+your underlying array
+just doesn't have enough space
+basically you have too many key-value pairs
+to fit into your underlying array.
+You can implement a hash table
+that resizes itself.
+Now here, once again,
+I'm not going to go too much into detail
+in how this is implemented under the hood,
+there're various ways to implement resizing
+for hash tables.
+There are very complicated ways to do so.
+One pretty simple example would be as follows.
+You could imagine that you initialized a hash table,
+at first the underlying array is an array of,
+let's say length 10,
+so I'll write it here.
+You've got this array,
+let's say of length 10
+and as you insert key-value pairs in this hash table,
+you hash the keys,
+you dump them into this underlying array
+and may be when your underlying array gets filled up,
+let's say to two thirds or three-fourths,
+so may be if you have seven indices
+in this underlying array
+that get taken up
+or eight indices,
+your hash table is going to be smart enough
+to know that it needs to resize itself.
+And so one way that it might do that is
+it might create a copy of the underlying array
+and double it in size,
+sort of like a dynamic array would do
+when you append an element at the end of it.
+So here conceptually,
+we would move this bracket to the right
+and then the other thing that the hash table would do
+is it would take all the keys
+that had already been hashed and dumped
+into the underlying array,
+it would pass them all through a new hashing function,
+a hashing function where you eventually mod the number
+by the new length of the new underlying array.
+It would re-dump all the key-value pairs
+into this new underlying array
+but so the key part here is that
+because it would have used a new hashing function
+relevant to the size of this new array,
+the key-value pairs would now be placed potentially
+at different positions in this new array
+and that's that.
+And you can imagine that
+the same thing would happen
+if you have a hash table that's very big
+and then you start deleting key-value pairs from it,
+the hash table might resize itself
+past a certain threshold to make itself smaller
+because you don't need to have a gigantic underlying array
+if you only have a few key-value pairs.
+So this resizing is what a hash table
+is going to have to do
+if you want to avoid
+the inevitable collisions that happen
+when you have an array that's just not big enough
+to store a certain amount of keys.
+Because eventually if you keep adding key-value pairs
+to a hash table,
+the underlying array is going to run out of space
+and you're gonna have inevitably giant linked lists
+unless you do this resizing.
+And here we could apply the exact same logic
+that we applied in the arrays video
+of the data structures content on Dev Elite
+where we'd explained why the amortized time complexity
+of appending a value to the end of a dynamic array
+was O of one or constant time.
+Here it's the exact same thing.
+You could imagine that this resizing
+will occur very infrequently
+and you can prove mathematically
+that on average from an amortized analysis point of view,
+we're still going to be able to retain
+these constant time insertions and deletions
+even with the resizing
+because the resizing is going to happen very infrequently.
+And for the last time I'm going to say that,
+in practice,
+there are some very powerful hashing functions
+that exist,
+there are some very fancy implementations
+of hash tables
+that we don't really need to understand
+for the purpose of coding interviews
+but you can trust that
+they are very powerful
+and they are very optimized for performance.
+Perhaps the last thing to note here
+is that initializing a hash table
+if you are dumping, for instance,
+n elements in it
+it's going to take O of n time.
+As far as space complexity is concerned,
+it's really going to depend on the values
+that you're storing,
+the keys aren't really gonna be relevant
+'coz typically you can have the nodes in your linked lists
+point to the existing keys.
+They are not going to be storing new versions of the keys.
+They are just going to be pointing to them in memory
+but the values you'll likely be storing.
+So typically again,
+we say that the space complexity is O of n space
+for this storing hash table of n key-value pairs.
+And one final thing that might be worth mentioning here
+that I've briefly hinted at
+at the beginning of the video is that
+when you're dealing with hash tables,
+you don't actually need your keys in your key-value pairs
+to be strings.
+In theory all that you need is
+for your keys to be values
+that can be passed to a hashing function
+and turned into integers
+and this is why in some programming languages,
+built-in hash tables actually support
+other types of data structures as keys,
+not just strings.
+Some programming languages however,
+limit you to strings and integers
+for the keys of built-in hash tables.
+And so that's it.
+This is how a hash table works.
+Like I said at the beginning of the video,
+this is a very powerful data structure
+and a very common one.
+I hope that you found this video informative
+and I'll see you in the next one.
+Hey everybody, welcome to Dev Elite.
+In this video, we're gonna be covering trees.
+trees are one of the most prominent data structures
+in all of Computer Science, Software Engineering
+and of course, Coding Interviews.
+In fact, when most most people hear
+the phrase Data Structures, they think of a tree.
+They picture the canonical image of a Binary Tree,
+like the one that we have in front of us here.
+Now, what's interesting about trees is that
+just like with graphs and by the way spoiler alert
+a tree is a type of graph.
+But, just like with graphs,
+if you look at the academic definition of a tree,
+especially the mathematical definition of a tree,
+you're gonna see something very complicated,
+you're gonna have to start reading about graph theory,
+which itself is a very complex subject area
+and you're probably gonna get very discouraged.
+Now the good news,
+is that in the context of Coding Interviews,
+trees are actually quite simple.
+You just have to be familiar with how they work conceptually
+and then you have to practice manipulating them.
+And of course, you can do that
+by doing a lot of practice problems.
+But, so let's start by defining what a tree actually is,
+we just said a tree is a type of graph,
+but more specifically, in Computer Science
+and in the context of Coding Interviews,
+when we talk about a tree, what we're referring to
+a graph structure that is rooted.
+Meaning it has a root node, or conceptually
+you can think of this as the top node of the structure.
+So, here in the example in front of us
+the node with the value 10,
+is the root node of this graph structure.
+Then, every node has child nodes,
+so for instance here the node with value 10
+had two as a child node and -31 as a child node,
+then two has 51
+and seven as children nodes, - 31 has zero and eight
+and so on and so forth.
+Then, the structure is directed,
+and if you remember from the graphs video
+of the data structures content on Dev Elite
+A directed graph is just a graph where
+the edges have a direction.
+In this case the edges are typically
+gonna point downwards in the tree.
+Basically, you've got a node like the node with value 10
+and it's got edges that point to two and that point to -31.
+Then the structure is also gonna be Acyclic.
+Meaning it's not gonna have cycles.
+So for instance, you would not be able to have
+the node with value eight point back
+upwards to the node with value 10,
+that would not be allowed in a tree
+or rather this would become just a normal graph,
+but not a tree and then, each node in the tree
+can only have one parent.
+In other words, you can not have for instance,
+the node two also point to zero here,
+cause then the node zero
+would have two parents, it would have two and -31
+and that would no longer be a tree.
+And I suppose I forgot to mention that the tree
+is not allowed to be disconnected.
+In other words, you could not have,
+let's say this right sub-tree here disconnected
+like this and call this entire structure a tree.
+Here you would have two different trees.
+You would have this left one here,
+which would be one tree.
+And you would have this one,
+which would be a second one,
+but together these would not form a tree.
+They would form a graph like we said
+a disconnected graph in the graphs video,
+but together they would not form a tree.
+Now perhaps the easiest way to think of a tree
+is to look at real life examples.
+For instance,
+if you imagine a management chain in a company
+where you've got a manager who has direct to reports
+and these direct reports maybe the managers themselves
+of other people and so on and so forth.
+That forms a tree like structure
+or if you have human beings who have children
+and their children have children of their own,
+that would form a tree like structure.
+So, that's what a tree is.
+Now there are a lot of different types of trees,
+perhaps the most common type of tree
+is what we call a Binary Tree.
+And this is the one that you might be familiar with,
+it's the one that we have in front of us here
+and a Binary Tree is just a normal tree
+where every node has at most two child nodes.
+So here 10 has two child nodes, two and -31.
+Both respectively have two child nodes,
+but then 51, seven, zero and eight
+don't have any child nodes.
+They could have one, so for instance you could have
+the seven here would have another one,
+let's say value two, that would be fine,
+but it would not be able to have more than two
+in order for this to be a Binary Tree.
+But like I just said before,
+there are other types of trees.
+So for instance, there is such a thing as a Ternary Tree.
+So we could give a third child node to the root node,
+the node will value 10.
+We could give a third child here,
+that will be, let's say nine
+and this will now be a Ternary tree,
+because the root node has three nodes
+and presumably, every other node in the tree,
+would have at most three child nodes.
+And so as you could imagine,
+we can generalize this as k-ary trees.
+k-ary trees, are trees where every node
+has at most k child nodes.
+Now so far, we've covered different types
+of trees specifically with respect to
+the number of children nodes
+that each node in the trees has
+but, they're also different kinds of trees,
+that differentiate themselves
+not on the number of children that their nodes have
+but rather on special properties that they follow.
+So for instance, you may have heard of
+Binary Search trees, also knows as BSTs.
+BSTs are special type of Binary Tree,
+where every node in the BST, also satisfies
+a special BST property.
+You may have heard of Heaps, or more specifically,
+Min-Heaps and Max-Heaps.
+Min and Max-Heaps which are also by the way
+typically Binary Heaps,
+are spacial types of Binary trees
+where every node in the tree satisfies,
+the Min or Max Heap property.
+You may have heard of trees spelt Tries.
+Tries are a tree-like data structure,
+that typically stores characters in a string
+and allows you to do really cool stuff
+with strings using a tree-like data structure.
+The point that I'm trying to get at here is that,
+there are a lot of different types of trees.
+We cover all of the ones that I just mentioned
+on Dev Elite.
+We actually have dedicated sections
+in the questions list on Dev Elite
+for these various types of trees,
+and I would encourage you to check out
+the questions where we have you construct
+each of those data structures.
+So for instance, constructing a BST,
+constructing a Min-Heap and we cover those data structures
+at length, in those questions
+and in the videos for those questions,
+so I'm not gonna dive into their details here.
+But, like I said,
+the point is there are a lot of different trees,
+not just the Canonical Binary Tree.
+And perhaps one more example worth noting here
+is that some trees are actually gonna have
+every node in the tree also point to its' parent node.
+So for instance, we could make this tree here,
+have every node point to its' parent node,
+which would mean that -31 would point back to 10,
+two would point bact to 10, zero would point back to -31
+and so on and so forth.
+And as you could imagine,
+this can be really useful sometimes.
+Now, most trees typically don't have this,
+most trees don't have pointers
+from their nodes to their parent nodes.
+But you can have them if you want.
+As far as space time complexity ramifications
+of trees are concerned,
+there are a few things that I wanna highlight here.
+The first one is that, as you might imagine,
+storing a tree, whatever type of tree it may be,
+is almost always gonna be an O of N space complexity
+where N is the total number of nodes in the tree.
+And this should be self-evident.
+You've got N nodes, therefore, you have
+a space complexity of O of N.
+If you're traversing through an entire tree.
+So imagine you were traversing through
+this entirety of this tree and by the way,
+here again we have a question on Dev Elite
+that specifically deals with various types of
+traversal methods for trees, so I'd encourage you
+to check that one out under the BST category.
+But very quickly here,
+you can imagine that if you wanted to traverse
+through all N nodes of given tree,
+it would take O of N time.
+So traversing through a tree,
+assuming that you are not doing any auxiliary operations,
+its gonna be an O of N, time operation.
+Now, things get interesting when you traverse a tree,
+not as I just mentioned here,
+where you go through all N nodes,
+but when you traverse a tree starting at
+the very top of the tree and then going down,
+one path as opposed to all paths in the tree.
+Cause here, when I said O then time complexity
+for traversing the tree, I specifically mentioned,
+that we were traversing through all N nodes of the tree.
+But as you can imagine, sometimes
+you're gonna start at the top of the tree
+and you're just gonna go down one sub-tree,
+not all of the other sub-trees.
+And so here we'll specifically look at
+the Binary Tree example because this is gonna be
+the one that's the most common in Coding Interviews.
+So let me erase this node here.
+When you've got a Binary Tree,
+if you're going down the Binary Tree
+and at every step of the way you're picking one
+of the two sub-trees to go down through.
+You will have a time complexity of O of log of N.
+Now here if you haven't seen the logarithm video
+of the data structures content on Dev Elite,
+I'd highly encourage you to go check it out
+because it's incredibly important to understand this
+and I'm not gonna redefine the logarithm here.
+But as you can imagine, if you're dealing with
+a Binary Tree and you start at the root node
+and you decide to go down one path,
+so, here let's say we decide to go down the left path.
+You'll effectively eliminate the entire right sub-tree.
+Now you're at the node with value two
+and let's say, you decide to go down to the right.
+You'll effectively eliminate the entire left sub-tree.
+So you've effectively eliminate all of this.
+Then, once you're at the seven,
+if you decide to go again to the right,
+here, there is nothing but let's assume there were something
+or you know you decide to explore if there's something here.
+Once again, you've effectively eliminate
+the entire left sub-tree.
+So, when your dealing with a Binary Tree
+and you're doing this sort of traversal where
+you start at the top and you eliminate
+one sub-tree of the Binary Tree every time,
+if you're dealing with what's called a
+Balanced Binary Tree, and I'll get into that in a second,
+you will likely have a time complexity of O of log of N.
+And as we explained in the logarithm video,
+the reason that's the case is because;
+you're eliminating half of the input.
+In this case, half of the nodes in the tree
+at every step of the way.
+Now of you're paying attention carefully,
+you'll notice that I said likely not always
+and I actually wrote this time complexity here,
+I should add the T.
+I actually wrote this time complexity here,
+in purple because, what if you're tree is very skewed?
+Meaning it has a lot of nodes on one side
+and not a lot of nodes on another side.
+So for instance, imagine you're dealing with
+this tree here at the top corner,
+that had a node at the top and then
+it had a bunch of nodes here on the right.
+Let's say you know we kept going down this way
+but here it didn't have anything.
+Like it stopped on the left here.
+And imagine, you started going you started at the top
+and you stared going down the right side.
+You started going down the right, right,
+then left, then right.
+You wouldn't actually be eliminating
+half of the nodes at every step.
+Cause as you can see, this tree
+is skewed, or is imbalanced.
+And so this is another concept
+that is very important for trees.
+The concept of balance.
+We say that a tree is balanced,
+if it maintains roughly a log of N time complexity
+for this type of transversal,
+where you go down one path in the tree.
+So for instance, if we had a tree that
+started at the root node and then went down
+like this, like this, like this
+and then maybe had one more branch here,
+we would say that this is a balanced tree
+because it roughly maintains that log of N time complexity
+if you traverse it by doing the thing
+of picking one sub-tree at every time.
+But instead we grabbed this sub-tree
+and we put it here on the right side,
+then this would clearly no longer be a balanced tree.
+And so if you remember from the logarithm
+and Big O Notation videos, we demonstrated
+why a log of N complexity is very, very, good
+and much better than even a linear complexity,
+so as you can imagine, this property of trees
+or of Binary trees.
+Here we're dealing with Binary trees,
+we're no longer dealing with k-ary trees.
+But this property of Binary trees,
+where they have O of log of N time complexity,
+if you search them this way by going
+down one path at any given step, is incredibly important.
+It's so important,
+that there are very advanced types of trees
+like red-black trees or AVL trees,
+that are constructed in such a way
+that they can rebalance themselves, to maintain
+this log of N complexity.
+Now, typically these very advanced types of trees
+are not something that you have to know
+in a Coding Interview,
+they're good to be familiar with
+or if you do run into a question
+that deals with them in a Coding Interview,
+usually you're interviewer will explain to you
+what these structures are, they might give you
+a small crash course in beginning of the interview
+on what a red-black tree is, and how it works?
+But, it is important to know these types
+of structures do exists.
+The reason they exists, and the reason they're important
+is because, maintaining this log of N property,
+is really important.
+And so what this means by the way
+is that in an interview when you're dealing with
+a Binary Tree, unless you're guaranteed
+that the Binary Tree will be balanced,
+you do have to specify that a log of N complexity
+if you're doing this kind of traversal,
+where you pick one of the sub-trees every time,
+it's gonna be only log of N on average.
+If on average, the tree is balanced.
+Otherwise in the worst-case,
+what is it gonna be?
+It's gonna be linear, O of N.
+Why would it be O of N in the worst-case?
+Well because the worst case would be something similar
+to this, even worse than this.
+Where the tree basically forms a straight line.
+So if you had a tree that started here,
+and kept going left at every point,
+then in the worst-case traversing this tree
+by going all the way to the left,
+would take O of N time, where N is the
+number of nodes in the tree.
+Now, before we end the video,
+I do wanna cover a few pieces of vocabulary
+that you're gonna need, with regards to trees.
+So first of all,
+we say that any path in a tree that start at the root node
+and ends at one of the bottom nodes in the tree
+is a Branch.
+Then these bottom nodes, we call leaf-nodes.
+We say that every level in a tree so the
+root node in one level, this is a second level,
+this is a third level.
+All of these levels are called Levels,
+I suppose I used the word, that one is pretty self-evident.
+And then, I'm gonna clear my screen here actually.
+We say that a tree is complete,
+if every single level in the tree is filled up
+except the final level which may or may not be filled up.
+But if the final level has nodes,
+they should be filled up from left to right,
+so for instance, this I'll draw out a quick tree.
+Something like this would be a complete tree,
+but something like this would not be a complete tree.
+This would be incomplete because the final level,
+is not filled up from left to right.
+Similarly, something like this would not be a complete tree
+because the second level isn't filled up completely
+even though there is a third level.
+But a complete tree would look like this.
+This would be a complete tree,
+this would be a complete tree,
+this would be a complete tree.
+Then we say that a tree is full if
+every node in the tree has either
+no children nodes or K children nodes.
+Where k is the number in the k-ary tree.
+So for instance, this were a k-ary tree,
+then every node would have k-children
+or at most k-children
+and we would say that the tree is
+full if every node either has
+no children or exactly k-children.
+So here, if we're dealing with a Binary Tree
+in our example, this would not be a full tree
+because as you can see, we've got
+this node here that only has one node.
+One child node, it doesn't have zero
+it doesn't have two.
+However, this would be a full tree.
+Similarly, this would be a full tree.
+Now this would not be complete
+cause the final level isn't filled up from left to right
+but it would be a full tree.
+And finally the last piece of vocabulary
+that's good to know is what we call a Perfect Tree.
+A perfect tree is a tree where
+all of the leaf-nodes have the same depth.
+And I suppose i also forgot to mention,
+the word depth.
+Depth is basically how far down a tree goes.
+So this tree here would have a depth of one, two, three
+or maybe one, two ,three, four.
+Its basically the number of levels in a tree.
+Sometimes you'll hear some people call that height,
+others would just say how many levels does a tree have?
+But so a perfect tree is a tree where
+all of the leaf-nodes have the same depth,
+or another way to think about it is
+the tree is completely filled up.
+So for instance, here you would have to add
+four nodes at the bottom here,
+and this would make this tree, a perfect tree.
+So those are all the basic bits of vocabulary
+that are important to know.
+I would say that things like leaf or branch
+are very common, you'll often hear people talk about them
+in coding interviews for instance.
+Things like completeness of fullness
+or perfection of a tree are a little bit more rare.
+They are important because,
+for instance when you're dealing with heaps,
+the concept of completeness is gonna be important
+because heaps are typically complete trees.
+But, I wouldn't stress too much
+if you walk into an interview and you forgotten
+what exactly a full tree is, for example.
+Because if you do run into that,
+in an interview where you have to deal with a tree
+that is full, typically your interviewer
+will remind you of what that means.
+They'll give you a little crash course on what that means.
+And they might say,
+Hey are you familiar with what it means
+for a tree to be full?
+And if you're not, they'll remind you.
+So with that,
+I hope that you found this video informative
+and I'll see you, in the next one.
